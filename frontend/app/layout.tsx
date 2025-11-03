@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Playfair_Display, Lora, Inter } from 'next/font/google';
+import { Toaster } from 'react-hot-toast';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ReadingProgress from '@/components/ReadingProgress';
@@ -67,6 +68,7 @@ export default function RootLayout({
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
+        <Toaster />
       </body>
     </html>
   );
