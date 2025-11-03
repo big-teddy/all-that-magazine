@@ -41,12 +41,12 @@ export default function NewsletterSection() {
 
             {/* Heading */}
             <h2 className="font-serif text-4xl lg:text-5xl font-black text-white mb-4">
-              Never Miss a Story
+              최신 소식을 놓치지 마세요
             </h2>
 
             {/* Description */}
             <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              Get the latest articles on wellness, lifestyle, and tech delivered directly to your inbox. Join thousands of readers.
+              웰니스, 라이프스타일, 테크 분야의 최신 기사를 이메일로 받아보세요. 수천 명의 독자와 함께하세요.
             </p>
 
             {/* Form */}
@@ -55,7 +55,7 @@ export default function NewsletterSection() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
+                placeholder="이메일 주소를 입력하세요"
                 required
                 disabled={status === 'loading'}
                 className="flex-1 px-6 py-4 rounded-xl bg-white/10 backdrop-blur-sm border-2 border-white/20 text-white placeholder-gray-400 focus:outline-none focus:border-white/40 focus:bg-white/15 transition-all disabled:opacity-50"
@@ -66,13 +66,13 @@ export default function NewsletterSection() {
                 disabled={status === 'loading'}
                 className="px-8 py-4 bg-white text-black font-bold rounded-xl hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-white/50 transition-all transform hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
               >
-                {status === 'loading' ? 'Subscribing...' : status === 'success' ? 'Subscribed!' : 'Subscribe'}
+                {status === 'loading' ? '구독 중...' : status === 'success' ? '구독 완료!' : '구독하기'}
               </button>
             </form>
 
             {/* Privacy notice */}
             <p className="mt-4 text-sm text-gray-400">
-              We respect your privacy. Unsubscribe at any time.
+              개인정보를 존중합니다. 언제든지 구독을 취소할 수 있습니다.
             </p>
           </div>
         </div>

@@ -21,7 +21,7 @@ export default function ArticleContent({ content }: Props) {
 
     const extractedImages = Array.from(imgElements).map((img) => ({
       src: img.src,
-      alt: img.alt || 'Article image',
+      alt: img.alt || '기사 이미지',
     }));
 
     setImages(extractedImages);

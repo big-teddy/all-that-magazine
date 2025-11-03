@@ -65,9 +65,9 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {[
-              { href: '/wellness', label: 'Wellness', color: 'wellness' },
-              { href: '/lifestyle', label: 'Lifestyle', color: 'lifestyle' },
-              { href: '/tech', label: 'Tech', color: 'tech' }
+              { href: '/wellness', label: '웰니스', color: 'wellness' },
+              { href: '/lifestyle', label: '라이프스타일', color: 'lifestyle' },
+              { href: '/tech', label: '테크', color: 'tech' }
             ].map((link) => (
               <Link
                 key={link.href}
@@ -91,7 +91,7 @@ export default function Header() {
             <motion.button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
               className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
-              aria-label="Search"
+              aria-label="검색"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
@@ -106,14 +106,14 @@ export default function Header() {
               whileHover={{ scale: 1.05, boxShadow: '0 4px 12px rgba(0,0,0,0.15)' }}
               whileTap={{ scale: 0.95 }}
             >
-              Subscribe
+              구독하기
             </motion.button>
 
             {/* Mobile Menu Button */}
             <motion.button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
-              aria-label="Menu"
+              aria-label="메뉴"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
@@ -145,7 +145,7 @@ export default function Header() {
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search articles..."
+                  placeholder="기사 검색..."
                   autoFocus
                   className="flex-1 px-6 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-black transition-colors text-lg"
                 />
@@ -155,7 +155,7 @@ export default function Header() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Search
+                  검색
                 </motion.button>
               </form>
             </div>
@@ -173,9 +173,9 @@ export default function Header() {
           >
             <nav className="px-4 py-6 space-y-4">
               {[
-                { href: '/wellness', label: 'Wellness' },
-                { href: '/lifestyle', label: 'Lifestyle' },
-                { href: '/tech', label: 'Tech' }
+                { href: '/wellness', label: '웰니스' },
+                { href: '/lifestyle', label: '라이프스타일' },
+                { href: '/tech', label: '테크' }
               ].map((link, index) => (
                 <motion.div
                   key={link.href}
@@ -197,7 +197,7 @@ export default function Header() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                Subscribe
+                구독하기
               </motion.button>
             </nav>
           </motion.div>

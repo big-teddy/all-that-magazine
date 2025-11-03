@@ -43,7 +43,7 @@ export default function FeaturedSection({ articles }: Props) {
         animate={inView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="font-serif text-3xl lg:text-5xl font-black">Featured Stories</h2>
+        <h2 className="font-serif text-3xl lg:text-5xl font-black">주요 기사</h2>
       </motion.div>
 
       <motion.div
@@ -100,7 +100,7 @@ export default function FeaturedSection({ articles }: Props) {
                         animate={{ rotate: [0, -5, 5, -5, 0] }}
                         transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 5 }}
                       >
-                        ★ Premium
+                        ★ 프리미엄
                       </motion.span>
                     </div>
                   )}
@@ -117,13 +117,13 @@ export default function FeaturedSection({ articles }: Props) {
                   </p>
 
                   <div className="flex items-center gap-3 text-sm text-gray-500">
-                    <span>{readTime} min read</span>
+                    <span>{readTime}분</span>
                     <span>•</span>
                     <motion.span
                       className="group-hover:text-black transition-colors inline-flex items-center gap-1"
                       whileHover={{ x: 5 }}
                     >
-                      Read more →
+                      더 읽기 →
                     </motion.span>
                   </div>
                 </div>

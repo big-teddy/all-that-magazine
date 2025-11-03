@@ -11,27 +11,27 @@ export default function Footer() {
               ALL THAT
             </Link>
             <p className="text-gray-600 mb-4">
-              Premium Wellness Lifestyle Tech
+              프리미엄 웰니스 · 라이프스타일 · 테크 매거진
             </p>
           </div>
 
           {/* Verticals */}
           <div>
-            <h3 className="font-serif font-bold text-lg mb-4">Verticals</h3>
+            <h3 className="font-serif font-bold text-lg mb-4">카테고리</h3>
             <ul className="space-y-2">
               <li>
                 <Link href="/wellness" className="text-gray-600 hover:text-wellness transition-colors">
-                  Wellness
+                  웰니스
                 </Link>
               </li>
               <li>
                 <Link href="/lifestyle" className="text-gray-600 hover:text-lifestyle transition-colors">
-                  Lifestyle
+                  라이프스타일
                 </Link>
               </li>
               <li>
                 <Link href="/tech" className="text-gray-600 hover:text-tech transition-colors">
-                  Tech
+                  테크
                 </Link>
               </li>
             </ul>
@@ -39,26 +39,26 @@ export default function Footer() {
 
           {/* Legal */}
           <div>
-            <h3 className="font-serif font-bold text-lg mb-4">Legal</h3>
+            <h3 className="font-serif font-bold text-lg mb-4">법적 정보</h3>
             <ul className="space-y-2">
               <li>
                 <Link href="/about" className="text-gray-600 hover:text-brand-black transition-colors">
-                  About
+                  소개
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="text-gray-600 hover:text-brand-black transition-colors">
-                  Contact
+                  문의
                 </Link>
               </li>
               <li>
                 <Link href="/privacy" className="text-gray-600 hover:text-brand-black transition-colors">
-                  Privacy
+                  개인정보처리방침
                 </Link>
               </li>
               <li>
                 <Link href="/terms" className="text-gray-600 hover:text-brand-black transition-colors">
-                  Terms
+                  이용약관
                 </Link>
               </li>
             </ul>

@@ -85,14 +85,14 @@ export default function HeroSection({ article }: Props) {
             transition={{ duration: 0.8, delay: 0.7 }}
           >
             <div className="flex items-center gap-4 text-white/90">
-              <span className="text-sm font-medium">{readTime} min read</span>
+              <span className="text-sm font-medium">{readTime}분</span>
               {isPremium && (
                 <motion.span
                   className="text-yellow-400 font-bold"
                   animate={{ scale: [1, 1.1, 1] }}
                   transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
                 >
-                  ★ Premium
+                  ★ 프리미엄
                 </motion.span>
               )}
             </div>
@@ -101,7 +101,7 @@ export default function HeroSection({ article }: Props) {
               href={href}
               className="group inline-flex items-center gap-2 bg-white text-black px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition-all transform hover:scale-105 hover:shadow-xl"
             >
-              Read Article
+              기사 읽기
               <motion.svg
                 className="w-5 h-5"
                 fill="none"

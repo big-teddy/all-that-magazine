@@ -35,7 +35,7 @@ export default function VerticalSection({ title, slug, articles }: Props) {
           href={`/${slug}`}
           className="text-lg font-medium hover:underline inline-flex items-center gap-2 group"
         >
-          View All
+          전체 보기
           <motion.span
             animate={{ x: [0, 5, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 2 }}

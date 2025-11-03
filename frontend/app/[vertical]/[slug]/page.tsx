@@ -87,10 +87,10 @@ export default async function ArticlePage({ params }: Props) {
               <time dateTime={article.date} className="text-sm font-medium">
                 {formatDate(article.date)}
               </time>
-              <span className="text-sm font-medium">{article.articleFields.readTime} min read</span>
+              <span className="text-sm font-medium">{article.articleFields.readTime}분</span>
               {isPremium && (
                 <span className="px-3 py-1 bg-yellow-400 text-black text-xs font-bold rounded-full">
-                  ★ Premium
+                  ★ 프리미엄
                 </span>
               )}
             </div>
@@ -122,7 +122,7 @@ export default async function ArticlePage({ params }: Props) {
         {/* Author Bio */}
         {article.articleFields.authorBio && (
           <div className="bg-gray-50 rounded-2xl p-8 mb-16">
-            <h3 className="font-serif text-2xl font-bold mb-4">About the Author</h3>
+            <h3 className="font-serif text-2xl font-bold mb-4">저자 소개</h3>
             <div
               className="prose prose-gray"
               dangerouslySetInnerHTML={{ __html: article.articleFields.authorBio }}

@@ -92,7 +92,7 @@ export default function ArticleCard({ article, variant }: Props) {
                   transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 5 }}
                   style={{ transform: 'translateZ(20px)' }}
                 >
-                  ★ Premium
+                  ★ 프리미엄
                 </motion.span>
               </div>
             )}
@@ -116,7 +116,7 @@ export default function ArticleCard({ article, variant }: Props) {
             className="flex items-center gap-4 text-sm text-gray-500"
             style={{ transform: 'translateZ(10px)' }}
           >
-            <span>{readTime} min read</span>
+            <span>{readTime}분</span>
           </motion.div>
         </Link>
       </motion.div>
@@ -181,7 +181,7 @@ export default function ArticleCard({ article, variant }: Props) {
           className="flex items-center gap-3 text-sm text-gray-500"
           style={{ transform: 'translateZ(10px)' }}
         >
-          <span>{readTime} min</span>
+          <span>{readTime}분</span>
         </motion.div>
       </Link>
     </motion.div>

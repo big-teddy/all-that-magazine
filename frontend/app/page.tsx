@@ -51,7 +51,7 @@ export default async function HomePage() {
 
         {/* Wellness Section */}
         <VerticalSection
-          title="Wellness"
+          title="웰니스"
           slug="wellness"
           articles={wellnessArticles.slice(2)}
         />
@@ -60,7 +60,7 @@ export default async function HomePage() {
 
         {/* Lifestyle Section */}
         <VerticalSection
-          title="Lifestyle"
+          title="라이프스타일"
           slug="lifestyle"
           articles={lifestyleArticles.slice(1)}
         />
@@ -70,7 +70,7 @@ export default async function HomePage() {
 
         {/* Tech Section */}
         <VerticalSection
-          title="Tech"
+          title="테크"
           slug="tech"
           articles={techArticles.slice(1)}
         />
