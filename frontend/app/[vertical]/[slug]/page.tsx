@@ -8,6 +8,7 @@ import RelatedArticles from '@/components/RelatedArticles';
 import Paywall from '@/components/Paywall';
 import ShareButtons from '@/components/ShareButtons';
 import ArticleContent from '@/components/ArticleContent';
+import TableOfContents from '@/components/TableOfContents';
 
 export const revalidate = 60;
 
@@ -98,45 +99,55 @@ export default async function ArticlePage({ params }: Props) {
         </div>
       </div>
 
-      {/* Article Content */}
-      <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-        {/* Custom Excerpt */}
-        {article.articleFields.customExcerpt && (
-          <p className="text-xl lg:text-2xl text-gray-700 mb-12 leading-relaxed font-serif italic border-l-4 border-black pl-6">
-            {article.articleFields.customExcerpt}
-          </p>
-        )}
+      {/* Article Content with Table of Contents */}
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          {/* Main Content */}
+          <article className="lg:col-span-8">
+            {/* Custom Excerpt */}
+            {article.articleFields.customExcerpt && (
+              <p className="text-xl lg:text-2xl text-gray-700 mb-12 leading-relaxed font-serif italic border-l-4 border-black pl-6">
+                {article.articleFields.customExcerpt}
+              </p>
+            )}
 
-        {/* Content with Lightbox */}
-        <ArticleContent content={article.content} />
+            {/* Content with Lightbox */}
+            <ArticleContent content={article.content} />
 
-        {/* Paywall for Premium Content */}
-        {isPremium && <Paywall />}
+            {/* Paywall for Premium Content */}
+            {isPremium && <Paywall />}
 
-        {/* Share Buttons */}
-        <ShareButtons
-          title={article.title}
-          description={article.articleFields.customExcerpt || undefined}
-        />
-
-        {/* Author Bio */}
-        {article.articleFields.authorBio && (
-          <div className="bg-gray-50 rounded-2xl p-8 mb-16">
-            <h3 className="font-serif text-2xl font-bold mb-4">저자 소개</h3>
-            <div
-              className="prose prose-gray"
-              dangerouslySetInnerHTML={{ __html: article.articleFields.authorBio }}
+            {/* Share Buttons */}
+            <ShareButtons
+              title={article.title}
+              description={article.articleFields.customExcerpt || undefined}
             />
-          </div>
-        )}
 
-        {/* Related Articles */}
-        {relatedArticles.length > 0 && (
-          <div className="border-t border-gray-200 pt-12">
-            <RelatedArticles articles={relatedArticles} />
-          </div>
-        )}
-      </article>
+            {/* Author Bio */}
+            {article.articleFields.authorBio && (
+              <div className="bg-gray-50 rounded-2xl p-8 mb-16">
+                <h3 className="font-serif text-2xl font-bold mb-4">저자 소개</h3>
+                <div
+                  className="prose prose-gray"
+                  dangerouslySetInnerHTML={{ __html: article.articleFields.authorBio }}
+                />
+              </div>
+            )}
+
+            {/* Related Articles */}
+            {relatedArticles.length > 0 && (
+              <div className="border-t border-gray-200 pt-12">
+                <RelatedArticles articles={relatedArticles} />
+              </div>
+            )}
+          </article>
+
+          {/* Table of Contents - Sidebar */}
+          <aside className="lg:col-span-4">
+            <TableOfContents content={article.content} />
+          </aside>
+        </div>
+      </div>
     </>
   );
 }
