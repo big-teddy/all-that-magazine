@@ -10,7 +10,7 @@ export const revalidate = 60; // ISR: Revalidate every 60 seconds
 
 async function getArticlesByVertical(vertical: string, first: number = 5) {
   try {
-    const data = await fetchGraphQL<{vertical: {articles: ArticlesResponse}}>(GET_ARTICLES_BY_VERTICAL, {
+    const data = await fetchGraphQL<{vertical: ArticlesResponse}>(GET_ARTICLES_BY_VERTICAL, {
       vertical,
       first,
     });

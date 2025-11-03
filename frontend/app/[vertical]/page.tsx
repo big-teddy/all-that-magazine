@@ -45,7 +45,7 @@ export default async function VerticalPage({ params }: Props) {
     notFound();
   }
 
-  const data = await fetchGraphQL<{vertical: {articles: ArticlesResponse}}>(GET_ARTICLES_BY_VERTICAL, {
+  const data = await fetchGraphQL<{vertical: ArticlesResponse}>(GET_ARTICLES_BY_VERTICAL, {
     vertical: params.vertical,
     first: 20,
   });

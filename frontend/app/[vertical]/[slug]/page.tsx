@@ -48,11 +48,11 @@ export default async function ArticlePage({ params }: Props) {
     <>
       {/* Hero Section with Featured Image */}
       <div className="relative h-[60vh] min-h-[500px] max-h-[700px] mb-12">
-        {article.articleFields.featuredImage ? (
+        {article.articleFields.featuredImage?.node ? (
           <>
             <Image
-              src={article.articleFields.featuredImage.sourceUrl}
-              alt={article.articleFields.featuredImage.altText || article.title}
+              src={article.articleFields.featuredImage.node.sourceUrl}
+              alt={article.articleFields.featuredImage.node.altText || article.title}
               fill
               className="object-cover"
               priority
