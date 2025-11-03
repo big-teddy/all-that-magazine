@@ -11,7 +11,9 @@
     "build": "npm run build:frontend && npm run build:plugin",
     "start": "cd frontend && npm start",
     "lint": "cd frontend && npm run lint",
-    "clean": "rm -rf frontend/.next frontend/node_modules wordpress-plugin/all-that-magazine-setup.zip"
+    "clean": "rm -rf frontend/.next frontend/node_modules wordpress-plugin/all-that-magazine-setup.zip",
+    "deploy:wordpress": "cd wordpress-plugin && ./deploy.sh",
+    "wp:remote": "cd wordpress-plugin && ./wp-remote.sh"
   },
   "repository": {
     "type": "git",
