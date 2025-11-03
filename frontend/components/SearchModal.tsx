@@ -6,6 +6,8 @@ import { Link } from 'next-view-transitions';
 import { useDebounce } from 'use-debounce';
 import Image from 'next/image';
 import { getVerticalColor } from '@/lib/utils';
+import LoadingAnimation from './LoadingAnimation';
+import VoiceSearch from './VoiceSearch';
 
 interface SearchResult {
   id: string;
@@ -113,6 +115,7 @@ export default function SearchModal({ isOpen, onClose }: Props) {
                     className="flex-1 text-2xl bg-transparent border-none outline-none font-serif font-bold placeholder-gray-400"
                     autoFocus
                   />
+                  <VoiceSearch onResult={(transcript) => setQuery(transcript)} />
                   <button
                     onClick={onClose}
                     className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
@@ -163,8 +166,9 @@ export default function SearchModal({ isOpen, onClose }: Props) {
               {/* Results */}
               <div className="max-h-[60vh] overflow-y-auto">
                 {isLoading ? (
-                  <div className="p-12 text-center text-gray-500">
-                    검색 중...
+                  <div className="p-12 flex flex-col items-center justify-center">
+                    <LoadingAnimation size={60} />
+                    <p className="mt-4 text-gray-500">검색 중...</p>
                   </div>
                 ) : query.length < 2 ? (
                   <div className="p-12 text-center text-gray-500">

@@ -5,6 +5,7 @@ import { ViewTransitions } from 'next-view-transitions';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ReadingProgress from '@/components/ReadingProgress';
+import CustomCursor from '@/components/CustomCursor';
 import './globals.css';
 
 // Korean-optimized serif font for headings
@@ -63,6 +64,7 @@ export default function RootLayout({
     <ViewTransitions>
       <html lang="ko" className={`${notoSerif.variable} ${notoSans.variable}`}>
         <body className="font-sans antialiased bg-brand-warm-white text-brand-navy" style={{ fontFamily: 'var(--font-sans)' }}>
+          <CustomCursor />
           <ReadingProgress />
           <Header />
           <main className="min-h-screen">{children}</main>

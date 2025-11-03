@@ -9,6 +9,8 @@ import Paywall from '@/components/Paywall';
 import ShareButtons from '@/components/ShareButtons';
 import ArticleContent from '@/components/ArticleContent';
 import TableOfContents from '@/components/TableOfContents';
+import BookmarkButton from '@/components/BookmarkButton';
+import FullscreenReader from '@/components/FullscreenReader';
 
 export const revalidate = 60;
 
@@ -117,11 +119,21 @@ export default async function ArticlePage({ params }: Props) {
             {/* Paywall for Premium Content */}
             {isPremium && <Paywall />}
 
-            {/* Share Buttons */}
-            <ShareButtons
-              title={article.title}
-              description={article.articleFields.customExcerpt || undefined}
-            />
+            {/* Action Buttons */}
+            <div className="flex flex-wrap items-center gap-4 mb-16">
+              <ShareButtons
+                title={article.title}
+                description={article.articleFields.customExcerpt || undefined}
+              />
+              <BookmarkButton
+                slug={article.slug}
+                title={article.title}
+              />
+              <FullscreenReader
+                content={article.content}
+                title={article.title}
+              />
+            </div>
 
             {/* Author Bio */}
             {article.articleFields.authorBio && (

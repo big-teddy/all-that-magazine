@@ -17,6 +17,7 @@
     "graphql": "^16.12.0",
     "graphql-request": "^7.3.1",
     "gsap": "^3.13.0",
+    "lottie-react": "^2.4.1",
     "next": "^14.2.33",
     "next-view-transitions": "^0.3.4",
     "react": "^18.3.1",
@@ -25,7 +26,8 @@
     "react-intersection-observer": "^10.0.0",
     "react-share": "^5.2.2",
     "use-debounce": "^10.0.6",
-    "yet-another-react-lightbox": "^3.25.0"
+    "yet-another-react-lightbox": "^3.25.0",
+    "zustand": "^5.0.8"
   },
   "devDependencies": {
     "@types/node": "^24.10.0",
