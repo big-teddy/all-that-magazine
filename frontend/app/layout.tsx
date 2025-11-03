@@ -1,29 +1,24 @@
 import type { Metadata } from 'next';
-import { Playfair_Display, Lora, Inter } from 'next/font/google';
+import { Noto_Serif_KR, Noto_Sans_KR } from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ReadingProgress from '@/components/ReadingProgress';
 import './globals.css';
 
-const playfair = Playfair_Display({
+// Korean-optimized serif font for headings
+const notoSerif = Noto_Serif_KR({
   subsets: ['latin'],
-  weight: ['400', '600', '700', '900'],
-  variable: '--font-playfair',
+  weight: ['400', '500', '600', '700', '900'],
+  variable: '--font-serif',
   display: 'swap',
 });
 
-const lora = Lora({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  variable: '--font-lora',
-  display: 'swap',
-});
-
-const inter = Inter({
+// Korean-optimized sans-serif font for body text
+const notoSans = Noto_Sans_KR({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
-  variable: '--font-inter',
+  variable: '--font-sans',
   display: 'swap',
 });
 
@@ -62,8 +57,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko" className={`${playfair.variable} ${lora.variable} ${inter.variable}`}>
-      <body className="font-sans antialiased bg-brand-warm-white text-brand-navy">
+    <html lang="ko" className={`${notoSerif.variable} ${notoSans.variable}`}>
+      <body className="font-sans antialiased bg-brand-warm-white text-brand-navy" style={{ fontFamily: 'var(--font-sans)' }}>
         <ReadingProgress />
         <Header />
         <main className="min-h-screen">{children}</main>

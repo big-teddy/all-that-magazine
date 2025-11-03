@@ -44,10 +44,10 @@ const config: Config = {
         },
       },
       fontFamily: {
-        // Typography from Figma Design System
-        serif: ['var(--font-playfair)', 'Playfair Display', 'Georgia', 'serif'],
-        body: ['var(--font-lora)', 'Lora', 'Georgia', 'serif'],
-        sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
+        // Korean-optimized typography
+        serif: ['var(--font-serif)', 'Noto Serif KR', 'serif'],
+        sans: ['var(--font-sans)', 'Noto Sans KR', 'system-ui', 'sans-serif'],
+        body: ['var(--font-sans)', 'Noto Sans KR', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         // Typography Scale from Figma Design System (Perfect Fourth - 1.333 ratio)
