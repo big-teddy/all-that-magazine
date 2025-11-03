@@ -1,0 +1,45 @@
+=================================================
+VERCEL ENVIRONMENT VARIABLES SETUP
+=================================================
+
+Vercel Dashboard에서 다음 환경변수를 설정하세요:
+https://vercel.com/[your-username]/[project-name]/settings/environment-variables
+
+-------------------------------------------------
+Production & Preview Environment
+-------------------------------------------------
+
+1. WORDPRESS_GRAPHQL_ENDPOINT
+   Value: https://wp.allthatmagazine.com/graphql
+   Environments: ✓ Production  ✓ Preview  ✓ Development
+
+2. NEXT_PUBLIC_SITE_URL (Production)
+   Value: https://allthatmagazine.com
+   Environments: ✓ Production
+
+3. NEXT_PUBLIC_SITE_URL (Preview)
+   Value: https://preview.allthatmagazine.com (또는 Vercel preview URL)
+   Environments: ✓ Preview
+
+4. REVALIDATE_SECRET
+   Value: gqt6xvk_tcy6hmr_allthatmagazine_2024
+   Environments: ✓ Production  ✓ Preview
+
+5. NEXT_PUBLIC_WP_API_URL
+   Value: https://wp.allthatmagazine.com/wp-json
+   Environments: ✓ Production  ✓ Preview  ✓ Development
+
+6. NEXT_PUBLIC_WP_USERNAME
+   Value: admin
+   Environments: ✓ Production  ✓ Preview
+
+7. NEXT_PUBLIC_WP_APP_PASSWORD
+   Value: [WordPress에서 생성한 Application Password]
+   Environments: ✓ Production  ✓ Preview
+
+=================================================
+설정 후 반드시 재배포하세요!
+=================================================
+
+Vercel → Deployments → Latest → ⋯ → Redeploy
+(Use existing Build Cache 체크 해제)
