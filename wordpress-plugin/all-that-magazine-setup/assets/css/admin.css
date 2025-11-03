@@ -1,0 +1,97 @@
+/**
+ * Admin Styles for All That Magazine Setup
+ */
+
+.atm-setup-page {
+    max-width: 900px;
+}
+
+.atm-setup-page h1 {
+    margin-bottom: 10px;
+}
+
+.atm-setup-page .description {
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.atm-setup-card {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+    padding: 30px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.atm-setup-card .button-large {
+    font-size: 16px;
+    height: auto;
+    padding: 12px 30px;
+}
+
+.atm-setup-checklist {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+    padding: 20px 30px;
+    margin: 20px 0;
+}
+
+.atm-setup-checklist ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.atm-setup-checklist li {
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.atm-setup-checklist li:last-child {
+    border-bottom: none;
+}
+
+.atm-setup-checklist .status-ok {
+    color: #00a32a;
+}
+
+.atm-setup-checklist .status-error {
+    color: #d63638;
+}
+
+.atm-setup-checklist .install-link {
+    margin-left: auto;
+    font-size: 13px;
+}
+
+.atm-setup-info {
+    background: #f0f6fc;
+    border-left: 4px solid #0071a1;
+    padding: 15px 20px;
+    margin: 20px 0;
+}
+
+.atm-setup-info p {
+    margin: 10px 0;
+}
+
+.atm-setup-info code {
+    background: #fff;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+}
+
+.atm-setup-info ol {
+    margin-left: 20px;
+}
+
+.atm-setup-info ol li {
+    margin: 8px 0;
+}
