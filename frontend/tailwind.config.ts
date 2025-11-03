@@ -50,11 +50,11 @@ const config: Config = {
         sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
       },
       fontSize: {
-        // Typography Scale from Figma Design System
-        'display': ['68px', { lineHeight: '1.1', fontWeight: '900' }],  // H1 Display
-        'section': ['42px', { lineHeight: '1.2', fontWeight: '700' }],  // H2 Section
+        // Typography Scale from Figma Design System (Perfect Fourth - 1.333 ratio)
+        'display': ['76px', { lineHeight: '1.1', fontWeight: '900' }],  // H1 Hero Display
+        'section': ['43px', { lineHeight: '1.2', fontWeight: '700' }],  // H2 Section
         'subheading': ['28px', { lineHeight: '1.3', fontWeight: '600' }], // H3 Subheading
-        'body': ['16px', { lineHeight: '1.6', fontWeight: '400' }],     // Body Copy
+        'body': ['18px', { lineHeight: '1.7', fontWeight: '400' }],     // Body Copy (Desktop preferred)
         'caption': ['13px', { lineHeight: '1.5', fontWeight: '400' }],  // Captions/Metadata
         // Standard scale
         'xs': '0.75rem',     // 12px

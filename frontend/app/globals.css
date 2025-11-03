@@ -22,15 +22,19 @@
   }
 
   .prose h2 {
-    @apply text-3xl mt-12 mb-6;
+    @apply text-3xl mt-12 mb-6 font-serif;
   }
 
   .prose h3 {
-    @apply text-2xl mt-8 mb-4;
+    @apply text-2xl mt-8 mb-4 font-serif;
   }
 
   .prose p {
-    @apply text-lg leading-relaxed mb-6;
+    @apply font-body text-lg leading-relaxed mb-6;
+  }
+
+  .prose li {
+    @apply font-body text-lg leading-relaxed;
   }
 
   .prose a {

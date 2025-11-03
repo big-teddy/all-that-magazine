@@ -26,16 +26,17 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'All That Magazine - Premium Wellness Lifestyle Tech',
-  description: 'Explore wellness, lifestyle, and technology through in-depth articles and exclusive insights.',
+  title: 'All That Magazine | 프리미엄 웰니스·라이프스타일·테크 매거진',
+  description: '웰니스, 라이프스타일, 기술 분야의 큐레이션된 프리미엄 콘텐츠. 한국과 글로벌 독자를 위한 깊이 있는 인사이트와 독점 스토리.',
+  keywords: ['웰니스', '라이프스타일', '테크', '매거진', 'wellness', 'lifestyle', 'technology', 'magazine'],
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   openGraph: {
     type: 'website',
     locale: 'ko_KR',
     url: '/',
     siteName: 'All That Magazine',
-    title: 'All That Magazine',
-    description: 'Premium Wellness Lifestyle Tech',
+    title: 'All That Magazine | 프리미엄 웰니스·라이프스타일·테크',
+    description: '웰니스, 라이프스타일, 기술 분야의 큐레이션된 프리미엄 콘텐츠',
     images: [
       {
         url: '/og-image.jpg',
@@ -47,8 +48,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'All That Magazine',
-    description: 'Premium Wellness Lifestyle Tech',
+    title: 'All That Magazine | 프리미엄 매거진',
+    description: '웰니스·라이프스타일·테크 분야의 프리미엄 콘텐츠',
     images: ['/og-image.jpg'],
   },
 };
