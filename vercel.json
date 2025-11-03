@@ -5,16 +5,6 @@
   "installCommand": "cd frontend && npm install",
   "framework": "nextjs",
   "outputDirectory": "frontend/.next",
-  "env": {
-    "WORDPRESS_GRAPHQL_ENDPOINT": "@wordpress_graphql_endpoint",
-    "NEXT_PUBLIC_SITE_URL": "@next_public_site_url",
-    "REVALIDATE_SECRET": "@revalidate_secret"
-  },
-  "build": {
-    "env": {
-      "WORDPRESS_GRAPHQL_ENDPOINT": "@wordpress_graphql_endpoint"
-    }
-  },
   "headers": [
     {
       "source": "/(.*)",
