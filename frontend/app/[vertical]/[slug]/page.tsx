@@ -7,6 +7,7 @@ import { formatDate, getVerticalColor } from '@/lib/utils';
 import RelatedArticles from '@/components/RelatedArticles';
 import Paywall from '@/components/Paywall';
 import ShareButtons from '@/components/ShareButtons';
+import ArticleContent from '@/components/ArticleContent';
 
 export const revalidate = 60;
 
@@ -106,11 +107,8 @@ export default async function ArticlePage({ params }: Props) {
           </p>
         )}
 
-        {/* Content */}
-        <div
-          className="prose prose-lg prose-headings:font-serif prose-headings:font-bold prose-p:leading-relaxed prose-p:mb-6 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl prose-img:shadow-lg max-w-none mb-16"
-          dangerouslySetInnerHTML={{ __html: article.content }}
-        />
+        {/* Content with Lightbox */}
+        <ArticleContent content={article.content} />
 
         {/* Paywall for Premium Content */}
         {isPremium && <Paywall />}
