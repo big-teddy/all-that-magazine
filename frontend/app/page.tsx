@@ -5,6 +5,7 @@ import HeroSection from '@/components/HeroSection';
 import FeaturedSection from '@/components/FeaturedSection';
 import VerticalSection from '@/components/VerticalSection';
 import NewsletterSection from '@/components/NewsletterSection';
+import ScrollReveal from '@/components/animations/ScrollReveal';
 
 export const revalidate = 60; // ISR: Revalidate every 60 seconds
 
@@ -46,34 +47,44 @@ export default async function HomePage() {
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Featured Stories */}
         {featuredArticles.length > 0 && (
-          <FeaturedSection articles={featuredArticles} />
+          <ScrollReveal>
+            <FeaturedSection articles={featuredArticles} />
+          </ScrollReveal>
         )}
 
         {/* Wellness Section */}
-        <VerticalSection
-          title="웰니스"
-          slug="wellness"
-          articles={wellnessArticles.slice(2)}
-        />
+        <ScrollReveal delay={0.1}>
+          <VerticalSection
+            title="웰니스"
+            slug="wellness"
+            articles={wellnessArticles.slice(2)}
+          />
+        </ScrollReveal>
 
         <div className="mt-20 lg:mt-32" />
 
         {/* Lifestyle Section */}
-        <VerticalSection
-          title="라이프스타일"
-          slug="lifestyle"
-          articles={lifestyleArticles.slice(1)}
-        />
+        <ScrollReveal delay={0.2}>
+          <VerticalSection
+            title="라이프스타일"
+            slug="lifestyle"
+            articles={lifestyleArticles.slice(1)}
+          />
+        </ScrollReveal>
 
         {/* Newsletter Section */}
-        <NewsletterSection />
+        <ScrollReveal delay={0.1}>
+          <NewsletterSection />
+        </ScrollReveal>
 
         {/* Tech Section */}
-        <VerticalSection
-          title="테크"
-          slug="tech"
-          articles={techArticles.slice(1)}
-        />
+        <ScrollReveal delay={0.2}>
+          <VerticalSection
+            title="테크"
+            slug="tech"
+            articles={techArticles.slice(1)}
+          />
+        </ScrollReveal>
       </div>
     </>
   );

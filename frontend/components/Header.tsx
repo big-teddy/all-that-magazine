@@ -3,11 +3,11 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import SearchModal from './SearchModal';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   const { scrollY } = useScroll();
@@ -27,15 +27,17 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      // TODO: Implement search functionality
-      console.log('Searching for:', searchQuery);
-      setIsSearchOpen(false);
-      setSearchQuery('');
-    }
-  };
+  // Keyboard shortcut for search (Cmd/Ctrl + K)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setIsSearchModalOpen(true);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   return (
     <motion.header
@@ -89,8 +91,8 @@ export default function Header() {
           <div className="flex items-center gap-3">
             {/* Search Button */}
             <motion.button
-              onClick={() => setIsSearchOpen(!isSearchOpen)}
-              className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              onClick={() => setIsSearchModalOpen(true)}
+              className="p-2 hover:bg-gray-100 rounded-lg transition-colors relative group"
               aria-label="검색"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -98,6 +100,9 @@ export default function Header() {
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
+              <span className="hidden md:block absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                ⌘K
+              </span>
             </motion.button>
 
             {/* Subscribe Button - Desktop */}
@@ -129,38 +134,6 @@ export default function Header() {
             </motion.button>
           </div>
         </div>
-
-        {/* Search Bar */}
-        {isSearchOpen && (
-          <motion.div
-            className="absolute top-full left-0 right-0 bg-white border-b border-gray-200 shadow-lg"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-          >
-            <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-              <form onSubmit={handleSearch} className="flex gap-4">
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="기사 검색..."
-                  autoFocus
-                  className="flex-1 px-6 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-black transition-colors text-lg"
-                />
-                <motion.button
-                  type="submit"
-                  className="px-8 py-3 bg-black text-white font-medium rounded-lg hover:bg-gray-800 transition-colors"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  검색
-                </motion.button>
-              </form>
-            </div>
-          </motion.div>
-        )}
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
@@ -203,6 +176,12 @@ export default function Header() {
           </motion.div>
         )}
       </div>
+
+      {/* Search Modal */}
+      <SearchModal
+        isOpen={isSearchModalOpen}
+        onClose={() => setIsSearchModalOpen(false)}
+      />
     </motion.header>
   );
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Noto_Serif_KR, Noto_Sans_KR } from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
+import { ViewTransitions } from 'next-view-transitions';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ReadingProgress from '@/components/ReadingProgress';
@@ -59,14 +60,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko" className={`${notoSerif.variable} ${notoSans.variable}`}>
-      <body className="font-sans antialiased bg-brand-warm-white text-brand-navy" style={{ fontFamily: 'var(--font-sans)' }}>
-        <ReadingProgress />
-        <Header />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
-        <Toaster />
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang="ko" className={`${notoSerif.variable} ${notoSans.variable}`}>
+        <body className="font-sans antialiased bg-brand-warm-white text-brand-navy" style={{ fontFamily: 'var(--font-sans)' }}>
+          <ReadingProgress />
+          <Header />
+          <main className="min-h-screen">{children}</main>
+          <Footer />
+          <Toaster />
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }

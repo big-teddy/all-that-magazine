@@ -1,8 +1,9 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 import { Article } from '@/lib/types';
 import { getVerticalColor } from '@/lib/utils';
 
@@ -14,17 +15,29 @@ export default function HeroSection({ article }: Props) {
   const vertical = article.verticals.nodes[0];
   const { featuredImage, customExcerpt, readTime, isPremium } = article.articleFields;
 
+  const containerRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  });
+
+  // Parallax effects
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0.3]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+
   const href = `/${vertical.slug}/${article.slug}`;
   const imageUrl = featuredImage?.node?.sourceUrl || 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1600&h=900&fit=crop';
   const imageAlt = featuredImage?.node?.altText || article.title;
 
   return (
-    <section className="relative h-[80vh] min-h-[600px] max-h-[900px] mb-20 lg:mb-32 overflow-hidden">
+    <section ref={containerRef} className="relative h-[80vh] min-h-[600px] max-h-[900px] mb-20 lg:mb-32 overflow-hidden">
       {/* Background Image with Parallax Effect */}
       <motion.div
         className="absolute inset-0"
-        initial={{ scale: 1.1 }}
-        animate={{ scale: 1 }}
+        style={{ y, scale }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
       >
         <Image
@@ -36,8 +49,11 @@ export default function HeroSection({ article }: Props) {
           sizes="100vw"
           quality={90}
         />
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+        {/* Gradient Overlay with opacity parallax */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"
+          style={{ opacity }}
+        />
       </motion.div>
 
       {/* Content */}
