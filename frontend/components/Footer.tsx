@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo & Tagline */}
           <div className="col-span-1 md:col-span-2">
-            <Link href="/" className="font-serif text-2xl font-black inline-block mb-4">
+            <Link href="/" className="font-serif text-2xl font-black inline-block mb-4 brand-logo">
               ALL THAT
             </Link>
             <p className="text-gray-600 mb-4">
@@ -66,7 +66,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-300 mt-8 pt-8 text-center text-gray-600 text-sm">
-          <p>&copy; {new Date().getFullYear()} All That Magazine. All rights reserved.</p>
+          <p className="text-english">&copy; {new Date().getFullYear()} All That Magazine. All rights reserved.</p>
         </div>
       </div>
     </footer>

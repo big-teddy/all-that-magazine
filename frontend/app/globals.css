@@ -5,21 +5,35 @@
 @layer base {
   html {
     @apply antialiased;
-    /* Korean text optimization */
+  }
+
+  body {
+    @apply font-sans bg-brand-white text-brand-black;
+  }
+
+  /* Typography - Default */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-black;
+  }
+
+  /* Korean text optimization - Apply to Korean content */
+  html:lang(ko) {
     word-break: keep-all;
     word-wrap: break-word;
     overflow-wrap: break-word;
   }
 
-  body {
-    @apply font-sans bg-brand-white text-brand-black;
-    letter-spacing: -0.015em; /* Korean body text optimization */
+  html:lang(ko) body {
+    letter-spacing: -0.015em;
   }
 
-  /* Typography - Korean optimized */
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-serif font-black;
-    letter-spacing: -0.01em; /* Korean heading optimization */
+  html:lang(ko) h1,
+  html:lang(ko) h2,
+  html:lang(ko) h3,
+  html:lang(ko) h4,
+  html:lang(ko) h5,
+  html:lang(ko) h6 {
+    letter-spacing: -0.01em;
     word-break: keep-all;
     text-wrap: balance;
   }
@@ -111,5 +125,19 @@
   /* Custom utilities */
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Brand/English text - No Korean optimization */
+  .text-brand,
+  .text-english {
+    letter-spacing: 0 !important;
+    word-break: normal !important;
+    text-wrap: normal !important;
+  }
+
+  /* Brand logo specific styling */
+  .brand-logo {
+    letter-spacing: 0.05em !important; /* Slight spacing for brand identity */
+    word-break: normal !important;
   }
 }

@@ -54,7 +54,7 @@ export default function Header() {
           >
             <motion.div
               style={{ scale: logoSize }}
-              className="font-serif text-2xl font-black hover:text-gray-600 transition-colors"
+              className="font-serif text-2xl font-black hover:text-gray-600 transition-colors brand-logo"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
