@@ -2,9 +2,6 @@
 
 Premium headless WordPress + Next.js magazine featuring Wellness, Lifestyle, and Tech content.
 
-[![Frontend CI/CD](https://github.com/big-teddy/all-that-magazine/actions/workflows/frontend-ci.yml/badge.svg)](https://github.com/big-teddy/all-that-magazine/actions/workflows/frontend-ci.yml)
-[![WordPress Plugin Build](https://github.com/big-teddy/all-that-magazine/actions/workflows/wordpress-plugin-build.yml/badge.svg)](https://github.com/big-teddy/all-that-magazine/actions/workflows/wordpress-plugin-build.yml)
-
 ## 🚀 Quick Start
 
 ### One-Command Setup
@@ -67,9 +64,9 @@ all-that-magazine/
 - **Vercel** - Deployment & hosting
 
 ### Automation
-- **GitHub Actions** - CI/CD pipeline
-- **Vercel** - Automatic deployments
+- **Vercel Integration** - Automatic deployments from GitHub
 - **npm scripts** - Development workflow
+- **WordPress deployment** - Manual or automated via FTP
 
 ## 📦 Installation
 
@@ -107,27 +104,42 @@ all-that-magazine/
 
 ## 🚢 Deployment
 
-### Automatic (Recommended)
+### Frontend (Vercel - Automatic)
 
-Push to `main` branch → GitHub Actions → Vercel Production
+Vercel automatically deploys via GitHub Integration:
 
 ```bash
 git push origin main
+# → Vercel automatically builds and deploys
+# → No GitHub Actions needed!
 ```
 
-### Manual
+**Features:**
+- Automatic production deploys on `main` branch
+- Preview deploys for Pull Requests
+- Custom domain support
+- Zero configuration
 
+See [VERCEL.md](VERCEL.md) for complete guide.
+
+### WordPress Plugin (Hostinger)
+
+**Manual deployment:**
 ```bash
-# Build everything
-npm run build
-
-# Deploy frontend to Vercel
-cd frontend
-npx vercel --prod
+npm run deploy:wordpress
 ```
+
+**Remote management:**
+```bash
+npm run wp:remote
+```
+
+See [HOSTINGER_SETUP.md](HOSTINGER_SETUP.md) for complete guide.
 
 ## 📚 Documentation
 
+- **[VERCEL.md](VERCEL.md)** - Vercel deployment guide
+- **[HOSTINGER_SETUP.md](HOSTINGER_SETUP.md)** - WordPress deployment & management
 - **[AUTOMATION.md](AUTOMATION.md)** - Complete automation guide
 - **[frontend/README.md](frontend/README.md)** - Frontend documentation
 - **[wordpress-plugin/README.md](wordpress-plugin/all-that-magazine-setup/README.md)** - Plugin documentation
@@ -164,6 +176,8 @@ npm run build:plugin   # Build WordPress plugin only
 npm start             # Start production server
 npm run lint          # Run linter
 npm run clean         # Clean build artifacts
+npm run deploy:wordpress  # Deploy WordPress plugin to Hostinger
+npm run wp:remote      # Remote WordPress management
 ```
 
 ### Project Commands
@@ -174,30 +188,34 @@ npm run clean         # Clean build artifacts
 cd wordpress-plugin && ./build.sh  # Build plugin
 ```
 
-## 🔄 CI/CD
+## 🔄 Deployment Workflow
 
-### Automated Workflows
+### Vercel (Frontend)
 
-**Frontend CI/CD** (`.github/workflows/frontend-ci.yml`)
-- ✅ Lint & type check
-- ✅ Build test
-- ✅ Deploy preview (PRs)
-- ✅ Deploy production (main branch)
+**Automatic via GitHub Integration:**
+- Push to `main` → Production deploy
+- Create PR → Preview deploy
+- Zero configuration needed
 
-**WordPress Plugin Build** (`.github/workflows/wordpress-plugin-build.yml`)
-- ✅ Create plugin ZIP
-- ✅ Upload artifacts
-- ✅ Attach to releases
-
-### GitHub Secrets Required
-
+**Environment Variables (Vercel Dashboard):**
 ```
-WORDPRESS_GRAPHQL_ENDPOINT
-NEXT_PUBLIC_SITE_URL
-VERCEL_TOKEN
-VERCEL_ORG_ID
-VERCEL_PROJECT_ID
-REVALIDATE_SECRET
+WORDPRESS_GRAPHQL_ENDPOINT=https://wp.allthatmagazine.com/graphql
+NEXT_PUBLIC_SITE_URL=https://allthatmagazine.com
+REVALIDATE_SECRET=your-random-secret
+```
+
+### Hostinger (WordPress)
+
+**Manual deployment:**
+```bash
+npm run deploy:wordpress
+```
+
+**Configuration (.env.hostinger):**
+```
+HOSTINGER_FTP_SERVER=ftp.your-domain.com
+HOSTINGER_FTP_USERNAME=your-username
+HOSTINGER_FTP_PASSWORD=your-password
 ```
 
 ## 🎯 Roadmap

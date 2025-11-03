@@ -1,4 +1,8 @@
-name: Deploy WordPress Plugin to Hostinger
+name: Deploy WordPress Plugin to Hostinger (DISABLED)
+
+# This workflow is disabled by default.
+# To enable: rename this file to deploy-wordpress.yml
+# Add GitHub Secrets: HOSTINGER_FTP_SERVER, HOSTINGER_FTP_USERNAME, HOSTINGER_FTP_PASSWORD
 
 on:
   push:

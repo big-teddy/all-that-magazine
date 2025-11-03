@@ -1,4 +1,7 @@
-name: WordPress Plugin Build
+name: WordPress Plugin Build (DISABLED)
+
+# This workflow is disabled by default.
+# To enable: rename this file to wordpress-plugin-build.yml
 
 on:
   push:
