@@ -1,0 +1,43 @@
+{
+  "version": 2,
+  "buildCommand": "cd frontend && npm run build",
+  "devCommand": "cd frontend && npm run dev",
+  "installCommand": "cd frontend && npm install",
+  "framework": "nextjs",
+  "outputDirectory": "frontend/.next",
+  "env": {
+    "WORDPRESS_GRAPHQL_ENDPOINT": "@wordpress_graphql_endpoint",
+    "NEXT_PUBLIC_SITE_URL": "@next_public_site_url",
+    "REVALIDATE_SECRET": "@revalidate_secret"
+  },
+  "build": {
+    "env": {
+      "WORDPRESS_GRAPHQL_ENDPOINT": "@wordpress_graphql_endpoint"
+    }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/sitemap.xml",
+      "destination": "/api/sitemap"
+    }
+  ]
+}

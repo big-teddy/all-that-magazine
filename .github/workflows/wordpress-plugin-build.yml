@@ -1,0 +1,38 @@
+name: WordPress Plugin Build
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'wordpress-plugin/**'
+  release:
+    types: [created]
+
+jobs:
+  build-plugin:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create plugin zip
+        working-directory: ./wordpress-plugin
+        run: |
+          chmod +x build.sh
+          ./build.sh
+
+      - name: Upload plugin artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: all-that-magazine-setup
+          path: wordpress-plugin/all-that-magazine-setup.zip
+          retention-days: 30
+
+      - name: Create GitHub Release
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v1
+        with:
+          files: wordpress-plugin/all-that-magazine-setup.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

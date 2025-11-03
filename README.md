@@ -2,75 +2,137 @@
 
 Premium headless WordPress + Next.js magazine featuring Wellness, Lifestyle, and Tech content.
 
-## Project Structure
+[![Frontend CI/CD](https://github.com/big-teddy/all-that-magazine/actions/workflows/frontend-ci.yml/badge.svg)](https://github.com/big-teddy/all-that-magazine/actions/workflows/frontend-ci.yml)
+[![WordPress Plugin Build](https://github.com/big-teddy/all-that-magazine/actions/workflows/wordpress-plugin-build.yml/badge.svg)](https://github.com/big-teddy/all-that-magazine/actions/workflows/wordpress-plugin-build.yml)
+
+## 🚀 Quick Start
+
+### One-Command Setup
+
+```bash
+npm run setup
+```
+
+### Start Development
+
+```bash
+npm run dev
+```
+
+That's it! 🎉
+
+## 📋 Features
+
+### Content
+- 🧘 **Wellness** - Mental health, fitness, nutrition
+- 🎨 **Lifestyle** - Culture, travel, trends
+- 💻 **Tech** - Wearables, apps, AI
+
+### Technology
+- ✅ **Headless CMS** - WordPress with WPGraphQL
+- ✅ **Modern Frontend** - Next.js 14 App Router
+- ✅ **Type Safety** - TypeScript strict mode
+- ✅ **Design System** - Tailwind CSS with Bold Minimalism
+- ✅ **Performance** - ISR, image optimization, SSG
+- ✅ **CI/CD** - Automated testing and deployment
+- ✅ **Mobile First** - Responsive design
+
+## 🏗️ Project Structure
 
 ```
 all-that-magazine/
-├── wordpress-plugin/           # WordPress backend setup plugin
+├── wordpress-plugin/           # WordPress backend setup
 │   └── all-that-magazine-setup/
-└── frontend/                   # Next.js frontend (to be created)
+├── frontend/                   # Next.js frontend
+│   ├── app/                   # Pages & routes
+│   ├── components/            # React components
+│   └── lib/                   # Utilities & GraphQL
+├── .github/workflows/         # CI/CD automation
+├── setup.sh                   # Automated setup
+└── dev.sh                     # Dev server launcher
 ```
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 ### Backend
 - **WordPress 6.4+** - Headless CMS
 - **WPGraphQL** - GraphQL API
 - **Advanced Custom Fields** - Content structure
-- **Hostinger Premium** - Hosting (₩50k/year)
+- **Hostinger Premium** - Hosting
 
 ### Frontend
-- **Next.js 14** - App Router
-- **TypeScript** - Strict mode
+- **Next.js 14** - App Router, TypeScript
 - **Tailwind CSS** - Bold Minimalism design
-- **Vercel** - Deployment
+- **GraphQL Request** - API client
+- **Vercel** - Deployment & hosting
 
-### Payments
-- Kakao Pay
-- Naver Pay
-- NHN KCP
+### Automation
+- **GitHub Actions** - CI/CD pipeline
+- **Vercel** - Automatic deployments
+- **npm scripts** - Development workflow
 
-## Features
+## 📦 Installation
 
-### Content Verticals
-- 🧘 **Wellness** - Mental health, fitness, nutrition
-- 🎨 **Lifestyle** - Culture, travel, trends
-- 💻 **Tech** - Wearables, apps, AI
+### Prerequisites
 
-### Membership Tiers
-- **Free** - 5 articles/month
-- **Plus** - ₩9,900/month - Unlimited access
-- **Premium** - ₩24,900/month - Early access + exclusive content
+- Node.js 18+
+- npm or yarn
+- WordPress installation
+- Git
 
-## Setup Instructions
+### Setup Steps
 
-### 1. WordPress Backend
+1. **Clone Repository**
+   ```bash
+   git clone https://github.com/big-teddy/all-that-magazine.git
+   cd all-that-magazine
+   ```
 
-1. Navigate to `wordpress-plugin/all-that-magazine-setup/`
-2. Zip the folder
-3. Upload to WordPress (Plugins → Add New → Upload)
-4. Activate plugin
-5. Install required plugins:
-   - Advanced Custom Fields
-   - WPGraphQL
-   - WPGraphQL for ACF
-6. Go to Settings → All That Setup
-7. Click "Run Complete Setup"
+2. **Run Setup**
+   ```bash
+   npm run setup
+   ```
 
-### 2. Next.js Frontend (Coming Next)
+3. **Configure WordPress**
+   - Upload `wordpress-plugin/all-that-magazine-setup.zip` to WordPress
+   - Install required plugins: ACF, WPGraphQL, WPGraphQL for ACF
+   - Go to Settings → All That Setup → Run Complete Setup
 
-Instructions will be added after frontend initialization.
+4. **Configure Frontend**
+   ```bash
+   cd frontend
+   # Edit .env.local with your WordPress GraphQL endpoint
+   npm run dev
+   ```
 
-## Timeline
+## 🚢 Deployment
 
-- **Week 1**: Setup ✅
-- **Week 2-3**: WordPress Backend
-- **Week 4-7**: Next.js Frontend
-- **Week 8-9**: Membership & Payments
-- **Week 10-11**: Content & Testing
-- **Week 12**: Launch
+### Automatic (Recommended)
 
-## Design System
+Push to `main` branch → GitHub Actions → Vercel Production
+
+```bash
+git push origin main
+```
+
+### Manual
+
+```bash
+# Build everything
+npm run build
+
+# Deploy frontend to Vercel
+cd frontend
+npx vercel --prod
+```
+
+## 📚 Documentation
+
+- **[AUTOMATION.md](AUTOMATION.md)** - Complete automation guide
+- **[frontend/README.md](frontend/README.md)** - Frontend documentation
+- **[wordpress-plugin/README.md](wordpress-plugin/all-that-magazine-setup/README.md)** - Plugin documentation
+
+## 🎨 Design System
 
 ### Typography
 - **Headlines**: Playfair Display (900)
@@ -78,65 +140,120 @@ Instructions will be added after frontend initialization.
 - **Scale**: Perfect Fourth (1.333 ratio)
 
 ### Colors
-- **Wellness**: #4CAF50 (Green)
-- **Lifestyle**: #9C27B0 (Purple)
-- **Tech**: #2196F3 (Blue)
+| Vertical | Color | Hex |
+|----------|-------|-----|
+| Wellness | Green | `#4CAF50` |
+| Lifestyle | Purple | `#9C27B0` |
+| Tech | Blue | `#2196F3` |
 
-### Layout
+### Layout Principles
 - 60% white space
 - 30% content
 - 10% accent colors
+- Mobile-first responsive
 
-## Documentation
+## 🧪 Development
 
-All detailed documentation is available in:
-- `PRD.md` - Product requirements
-- `NEXTJS_ARCHITECTURE.md` - Frontend architecture
-- `WORDPRESS_SETUP.md` - Backend setup
-- `DESIGN_SYSTEM.md` - Design specifications
-- `GRAPHQL_SCHEMA.md` - API documentation
-- `DEPLOYMENT_GUIDE.md` - Deployment process
-
-## GraphQL Endpoint
-
-After WordPress setup, your GraphQL endpoint will be:
-```
-https://wp.allthatmagazine.com/graphql
-```
-
-## Development
+### Available Scripts
 
 ```bash
-# Clone repository
-git clone https://github.com/your-username/all-that-magazine.git
-cd all-that-magazine
-
-# Setup WordPress plugin (upload to WordPress)
-cd wordpress-plugin/all-that-magazine-setup
-
-# Setup Next.js frontend (coming next)
-cd frontend
-npm install
-npm run dev
+npm run dev            # Start dev server
+npm run build          # Build everything
+npm run build:frontend # Build Next.js only
+npm run build:plugin   # Build WordPress plugin only
+npm start             # Start production server
+npm run lint          # Run linter
+npm run clean         # Clean build artifacts
 ```
 
-## Environment Variables
+### Project Commands
 
-Create `.env.local` in frontend directory:
 ```bash
-WORDPRESS_GRAPHQL_ENDPOINT=https://wp.allthatmagazine.com/graphql
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
-REVALIDATE_SECRET=your-secret-key
+./setup.sh            # Initial setup
+./dev.sh              # Start development
+cd wordpress-plugin && ./build.sh  # Build plugin
 ```
 
-## License
+## 🔄 CI/CD
+
+### Automated Workflows
+
+**Frontend CI/CD** (`.github/workflows/frontend-ci.yml`)
+- ✅ Lint & type check
+- ✅ Build test
+- ✅ Deploy preview (PRs)
+- ✅ Deploy production (main branch)
+
+**WordPress Plugin Build** (`.github/workflows/wordpress-plugin-build.yml`)
+- ✅ Create plugin ZIP
+- ✅ Upload artifacts
+- ✅ Attach to releases
+
+### GitHub Secrets Required
+
+```
+WORDPRESS_GRAPHQL_ENDPOINT
+NEXT_PUBLIC_SITE_URL
+VERCEL_TOKEN
+VERCEL_ORG_ID
+VERCEL_PROJECT_ID
+REVALIDATE_SECRET
+```
+
+## 🎯 Roadmap
+
+### Phase 1: MVP (Week 1-12) ✅
+- [x] WordPress backend setup
+- [x] Next.js frontend
+- [x] GraphQL integration
+- [x] Design system
+- [x] CI/CD automation
+
+### Phase 2: Membership (Week 8-9)
+- [ ] NextAuth.js integration
+- [ ] Payment flows (Kakao Pay, Naver Pay)
+- [ ] Membership tiers
+- [ ] Paywall system
+
+### Phase 3: Enhancement (Month 2-3)
+- [ ] Comment system
+- [ ] Search functionality
+- [ ] Newsletter automation
+- [ ] Author pages
+
+### Phase 4: Growth (Month 4-6)
+- [ ] Mobile app (React Native)
+- [ ] Advanced analytics
+- [ ] Member dashboard
+- [ ] 4th vertical
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open Pull Request
+
+## 📄 License
 
 GPL v2 or later
 
-## Status
+## 🔗 Links
 
-🚧 **In Development** - WordPress backend setup complete, Next.js frontend in progress
+- **GitHub**: https://github.com/big-teddy/all-that-magazine
+- **Issues**: https://github.com/big-teddy/all-that-magazine/issues
+- **Documentation**: See [AUTOMATION.md](AUTOMATION.md)
+
+## 💡 Support
+
+For support and questions:
+1. Check [AUTOMATION.md](AUTOMATION.md) for troubleshooting
+2. Review documentation in each directory
+3. Open an issue on GitHub
 
 ---
 
 **All That Magazine** - Premium Wellness Lifestyle Tech
+
+Built with ❤️ using WordPress + Next.js

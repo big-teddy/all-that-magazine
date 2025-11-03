@@ -1,0 +1,7 @@
+wordpress-plugin
+.git
+.github
+*.md
+!frontend/README.md
+setup.sh
+dev.sh

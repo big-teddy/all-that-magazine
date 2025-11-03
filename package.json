@@ -1,0 +1,33 @@
+{
+  "name": "all-that-magazine",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Premium headless WordPress + Next.js magazine",
+  "scripts": {
+    "dev": "./dev.sh",
+    "setup": "./setup.sh",
+    "build:frontend": "cd frontend && npm run build",
+    "build:plugin": "cd wordpress-plugin && ./build.sh",
+    "build": "npm run build:frontend && npm run build:plugin",
+    "start": "cd frontend && npm start",
+    "lint": "cd frontend && npm run lint",
+    "clean": "rm -rf frontend/.next frontend/node_modules wordpress-plugin/all-that-magazine-setup.zip"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/big-teddy/all-that-magazine.git"
+  },
+  "keywords": [
+    "wordpress",
+    "nextjs",
+    "magazine",
+    "headless-cms",
+    "graphql"
+  ],
+  "author": "All That Magazine",
+  "license": "GPL-2.0-or-later",
+  "bugs": {
+    "url": "https://github.com/big-teddy/all-that-magazine/issues"
+  },
+  "homepage": "https://github.com/big-teddy/all-that-magazine#readme"
+}
