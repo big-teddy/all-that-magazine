@@ -8,7 +8,7 @@ https://vercel.com → Project → Settings → Environment Variables
 ## 1. WORDPRESS_GRAPHQL_ENDPOINT
 ```
 Key: WORDPRESS_GRAPHQL_ENDPOINT
-Value: https://wp.allthatmagazine.com/graphql
+Value: https://gold-pheasant-847202.hostingersite.com/graphql
 Environments: ✓ Production  ✓ Preview  ✓ Development
 ```
 
@@ -37,7 +37,7 @@ Environments: ✓ Production  ✓ Preview
 ## 5. NEXT_PUBLIC_WP_API_URL
 ```
 Key: NEXT_PUBLIC_WP_API_URL
-Value: https://wp.allthatmagazine.com/wp-json
+Value: https://gold-pheasant-847202.hostingersite.com/wp-json
 Environments: ✓ Production  ✓ Preview  ✓ Development
 ```
 
@@ -79,3 +79,4 @@ Environments: ✓ Production  ✓ Preview
 ---
 
 작성일: 2025-11-04
+업데이트: 2025-11-03 - WordPress 엔드포인트를 실제 Hostinger 사이트로 변경
