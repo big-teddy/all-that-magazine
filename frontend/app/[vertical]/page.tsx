@@ -10,18 +10,18 @@ const VALID_VERTICALS: VerticalSlug[] = ['wellness', 'lifestyle', 'tech'];
 
 const VERTICAL_INFO = {
   wellness: {
-    title: 'Wellness',
-    description: 'Discover mindfulness, nutrition, fitness, and holistic health practices for a balanced life.',
+    title: '웰니스',
+    description: '균형 잡힌 삶을 위한 마음챙김, 영양, 피트니스, 전인적 건강 실천법을 알아보세요.',
     gradient: 'from-green-600 to-teal-600',
   },
   lifestyle: {
-    title: 'Lifestyle',
-    description: 'Explore design, culture, travel, and personal growth stories that inspire.',
+    title: '라이프스타일',
+    description: '영감을 주는 디자인, 문화, 여행, 자기계발 스토리를 탐험하세요.',
     gradient: 'from-purple-600 to-pink-600',
   },
   tech: {
-    title: 'Tech',
-    description: 'Stay ahead with insights on innovation, AI, productivity, and digital transformation.',
+    title: '테크',
+    description: '혁신, AI, 생산성, 디지털 전환에 대한 인사이트로 앞서가세요.',
     gradient: 'from-blue-600 to-cyan-600',
   },
 };
@@ -60,7 +60,7 @@ export default async function VerticalPage({ params }: Props) {
           {verticalInfo.title}
         </h1>
         <p className="text-lg text-gray-600">
-          No articles found in this vertical yet.
+          이 카테고리에 아직 기사가 없습니다.
         </p>
       </div>
     );
@@ -95,7 +95,7 @@ export default async function VerticalPage({ params }: Props) {
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         {/* Featured Article */}
         <div className="mb-20 lg:mb-32">
-          <h2 className="font-serif text-2xl lg:text-3xl font-bold mb-8">Featured Story</h2>
+          <h2 className="font-serif text-2xl lg:text-3xl font-bold mb-8">주요 기사</h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             {/* Image */}
@@ -127,9 +127,9 @@ export default async function VerticalPage({ params }: Props) {
               </p>
 
               <div className="flex items-center gap-6 mb-8 text-gray-500">
-                <span>{featuredArticle.articleFields.readTime} min read</span>
+                <span>{featuredArticle.articleFields.readTime}분</span>
                 {featuredArticle.articleFields.isPremium && (
-                  <span className="text-yellow-600 font-bold">★ Premium</span>
+                  <span className="text-yellow-600 font-bold">★ 프리미엄</span>
                 )}
               </div>
 
@@ -137,7 +137,7 @@ export default async function VerticalPage({ params }: Props) {
                 href={`/${params.vertical}/${featuredArticle.slug}`}
                 className="inline-flex items-center gap-2 bg-black text-white px-8 py-4 rounded-xl font-bold hover:bg-gray-800 transition-all transform hover:scale-105"
               >
-                Read Article
+                기사 읽기
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
@@ -148,7 +148,7 @@ export default async function VerticalPage({ params }: Props) {
 
         {/* All Articles Grid */}
         <div>
-          <h2 className="font-serif text-2xl lg:text-3xl font-bold mb-8">Latest Articles</h2>
+          <h2 className="font-serif text-2xl lg:text-3xl font-bold mb-8">최신 기사</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {restArticles.map((article) => (
