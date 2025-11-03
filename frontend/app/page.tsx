@@ -2,7 +2,8 @@ import { fetchGraphQL } from '@/lib/wordpress';
 import { GET_ARTICLES_BY_VERTICAL } from '@/lib/queries';
 import { ArticlesResponse, Article } from '@/lib/types';
 import HeroSection from '@/components/HeroSection';
-import EditorialGrid from '@/components/EditorialGrid';
+import BentoGrid from '@/components/BentoGrid';
+import InfiniteScrollCarousel from '@/components/InfiniteScrollCarousel';
 import VerticalSection from '@/components/VerticalSection';
 import NewsletterSection from '@/components/NewsletterSection';
 import SectionDivider from '@/components/SectionDivider';
@@ -25,21 +26,30 @@ async function getArticlesByVertical(vertical: string, first: number = 5) {
 
 export default async function HomePage() {
   const [wellnessArticles, lifestyleArticles, techArticles] = await Promise.all([
-    getArticlesByVertical('wellness', 8),
-    getArticlesByVertical('lifestyle', 8),
-    getArticlesByVertical('tech', 8),
+    getArticlesByVertical('wellness', 10),
+    getArticlesByVertical('lifestyle', 10),
+    getArticlesByVertical('tech', 10),
   ]);
 
   // Get hero article (first wellness article)
   const heroArticle = wellnessArticles[0];
 
-  // Editorial grid - mix from all verticals for dynamic layout
-  const editorialArticles: Article[] = [
+  // Bento grid - dynamic mix from all verticals
+  const bentoArticles: Article[] = [
     lifestyleArticles[0],
     techArticles[0],
     wellnessArticles[1],
     lifestyleArticles[1],
     techArticles[1],
+    wellnessArticles[2],
+    lifestyleArticles[2],
+  ].filter(Boolean);
+
+  // Carousel articles - latest from all categories
+  const carouselArticles: Article[] = [
+    ...wellnessArticles.slice(3, 6),
+    ...lifestyleArticles.slice(3, 6),
+    ...techArticles.slice(3, 6),
   ].filter(Boolean);
 
   return (
@@ -47,25 +57,25 @@ export default async function HomePage() {
       {/* Hero Section - Full viewport immersive experience */}
       {heroArticle && <HeroSection article={heroArticle} />}
 
-      {/* Generous spacing - luxury magazine standard */}
+      {/* Main Content */}
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
 
-        {/* Editorial Grid - Asymmetric luxury layout */}
-        {editorialArticles.length > 0 && (
+        {/* Bento Grid - Modern asymmetric layout */}
+        {bentoArticles.length >= 6 && (
           <ScrollReveal>
-            <EditorialGrid articles={editorialArticles} />
+            <BentoGrid articles={bentoArticles} />
           </ScrollReveal>
         )}
 
-        {/* Oversized Section Divider */}
+        {/* Section Divider */}
         <SectionDivider />
 
-        {/* Wellness Section - Refined spacing */}
+        {/* Wellness Section with refined spacing */}
         <ScrollReveal delay={0.1}>
           <VerticalSection
             title="웰니스"
             slug="wellness"
-            articles={wellnessArticles.slice(2, 7)}
+            articles={wellnessArticles.slice(6, 10)}
           />
         </ScrollReveal>
 
@@ -76,10 +86,23 @@ export default async function HomePage() {
           <VerticalSection
             title="라이프스타일"
             slug="lifestyle"
-            articles={lifestyleArticles.slice(2, 7)}
+            articles={lifestyleArticles.slice(6, 10)}
           />
         </ScrollReveal>
+      </div>
 
+      {/* Infinite Scroll Carousel - Full width */}
+      {carouselArticles.length > 0 && (
+        <ScrollReveal>
+          <InfiniteScrollCarousel
+            articles={carouselArticles}
+            title="최신 기사"
+          />
+        </ScrollReveal>
+      )}
+
+      {/* Continue with regular layout */}
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Newsletter Section */}
         <div className="my-32 lg:my-48">
           <ScrollReveal delay={0.1}>
@@ -92,7 +115,7 @@ export default async function HomePage() {
           <VerticalSection
             title="테크"
             slug="tech"
-            articles={techArticles.slice(2, 7)}
+            articles={techArticles.slice(6, 10)}
           />
         </ScrollReveal>
 

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import SearchModal from './SearchModal';
+import MagneticButton from './MagneticButton';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -105,14 +106,10 @@ export default function Header() {
               </span>
             </motion.button>
 
-            {/* Subscribe Button - Desktop */}
-            <motion.button
-              className="hidden md:block text-sm font-medium px-4 py-2 border-2 border-brand-black rounded-lg hover:bg-brand-black hover:text-brand-white transition-all"
-              whileHover={{ scale: 1.05, boxShadow: '0 4px 12px rgba(0,0,0,0.15)' }}
-              whileTap={{ scale: 0.95 }}
-            >
+            {/* Subscribe Button - Desktop with Magnetic Effect */}
+            <MagneticButton className="hidden md:block text-sm font-medium px-6 py-2.5 bg-black text-white rounded-full hover:bg-gray-800 transition-colors">
               구독하기
-            </motion.button>
+            </MagneticButton>
 
             {/* Mobile Menu Button */}
             <motion.button
