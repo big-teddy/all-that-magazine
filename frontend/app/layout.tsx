@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Playfair_Display, Lora, Inter } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ReadingProgress from '@/components/ReadingProgress';
 import './globals.css';
 
 const playfair = Playfair_Display({
@@ -62,6 +63,7 @@ export default function RootLayout({
   return (
     <html lang="ko" className={`${playfair.variable} ${lora.variable} ${inter.variable}`}>
       <body className="font-sans antialiased bg-brand-warm-white text-brand-navy">
+        <ReadingProgress />
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
