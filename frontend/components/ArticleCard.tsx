@@ -61,62 +61,75 @@ export default function ArticleCard({ article, variant }: Props) {
         className="group"
       >
         <Link href={href} className="block">
-          <div className="relative aspect-video mb-6 rounded-lg overflow-hidden">
+          {/* Image - Larger aspect ratio for hero */}
+          <div className="relative aspect-[4/3] mb-6 lg:mb-8 rounded-xl overflow-hidden">
             <motion.div
               className="w-full h-full"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.4 }}
+              whileHover={{ scale: 1.03 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
             >
               <Image
                 src={imageUrl}
                 alt={imageAlt}
                 fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                className="object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-700"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 800px"
               />
             </motion.div>
-            <div className="absolute top-4 left-4">
+
+            {/* Dark overlay on hover for better badge visibility */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+            {/* Badges */}
+            <div className="absolute top-4 lg:top-6 left-4 lg:left-6 flex gap-2">
               <motion.span
-                className={`inline-block px-3 py-1 rounded-full text-sm font-medium bg-white border-2 ${getVerticalColor(vertical.slug)}`}
-                whileHover={{ scale: 1.1 }}
+                className={`inline-block px-3 lg:px-4 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-bold bg-white border-2 ${getVerticalColor(vertical.slug)}`}
+                whileHover={{ scale: 1.05 }}
                 style={{ transform: 'translateZ(20px)' }}
               >
                 {vertical.name}
               </motion.span>
-            </div>
-            {isPremium && (
-              <div className="absolute top-4 right-4">
+              {isPremium && (
                 <motion.span
-                  className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-yellow-400 text-black"
-                  animate={{ rotate: [0, -2, 2, -2, 0] }}
-                  transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 5 }}
+                  className="inline-block px-3 lg:px-4 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-bold bg-yellow-400 text-black"
                   style={{ transform: 'translateZ(20px)' }}
                 >
                   ★ 프리미엄
                 </motion.span>
-              </div>
-            )}
+              )}
+            </div>
+
+            {/* Read time indicator on hover */}
+            <div className="absolute bottom-4 lg:bottom-6 right-4 lg:right-6 text-white/90 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              {readTime}분 읽기
+            </div>
           </div>
 
+          {/* Content */}
           <motion.h3
-            className="font-serif text-3xl lg:text-section font-black mb-3 group-hover:text-gray-600 transition-colors"
+            className="font-serif text-3xl lg:text-[48px] font-black mb-4 lg:mb-6 group-hover:text-gray-600 transition-colors leading-[1.1] tracking-tight"
             style={{ transform: 'translateZ(30px)' }}
           >
             {article.title}
           </motion.h3>
 
           <motion.p
-            className="text-lg text-gray-600 mb-4 line-clamp-2"
+            className="text-lg lg:text-xl text-gray-700 mb-4 lg:mb-6 line-clamp-2 leading-relaxed"
             style={{ transform: 'translateZ(20px)' }}
           >
             {customExcerpt}
           </motion.p>
 
+          {/* Read more link */}
           <motion.div
-            className="flex items-center gap-4 text-sm text-gray-500"
+            className="inline-flex items-center gap-2 text-sm lg:text-base font-medium group-hover:gap-4 transition-all"
             style={{ transform: 'translateZ(10px)' }}
+            whileHover={{ x: 5 }}
           >
-            <span>{readTime}분</span>
+            <span>더 읽기</span>
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
           </motion.div>
         </Link>
       </motion.div>
@@ -135,54 +148,63 @@ export default function ArticleCard({ article, variant }: Props) {
       className="group"
     >
       <Link href={href} className="block">
-        <div className="relative aspect-[4/3] mb-4 rounded-lg overflow-hidden">
-          <motion.div
-            className="w-full h-full"
-            whileHover={{ scale: 1.08 }}
-            transition={{ duration: 0.4 }}
-          >
-            <Image
-              src={imageUrl}
-              alt={imageAlt}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 300px"
-            />
-          </motion.div>
-          {isPremium && (
-            <div className="absolute top-3 right-3">
+        {/* Horizontal layout for compact, elegant presentation */}
+        <div className="flex gap-5">
+          {/* Image */}
+          <div className="relative aspect-square w-28 lg:w-32 flex-shrink-0 rounded-lg overflow-hidden">
+            <motion.div
+              className="w-full h-full"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Image
+                src={imageUrl}
+                alt={imageAlt}
+                fill
+                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                sizes="128px"
+              />
+            </motion.div>
+            {isPremium && (
+              <div className="absolute top-2 right-2">
+                <span className="inline-block px-1.5 py-0.5 rounded-full text-xs font-bold bg-yellow-400 text-black">
+                  ★
+                </span>
+              </div>
+            )}
+          </div>
+
+          {/* Content */}
+          <div className="flex-1 flex flex-col justify-center py-1">
+            {/* Vertical badge */}
+            <div className="mb-2">
               <motion.span
-                className="inline-block px-2 py-1 rounded-full text-xs font-bold bg-yellow-400 text-black"
-                style={{ transform: 'translateZ(15px)' }}
+                className={`inline-block text-xs font-bold uppercase tracking-wider ${getVerticalColor(vertical.slug)}`}
+                style={{ transform: 'translateZ(10px)' }}
               >
-                ★
+                {vertical.name}
               </motion.span>
             </div>
-          )}
+
+            {/* Title */}
+            <motion.h3
+              className="font-serif text-xl lg:text-2xl font-black mb-2 group-hover:text-gray-600 transition-colors line-clamp-2 leading-tight"
+              style={{ transform: 'translateZ(20px)' }}
+            >
+              {article.title}
+            </motion.h3>
+
+            {/* Meta */}
+            <motion.div
+              className="flex items-center gap-2 text-xs lg:text-sm text-gray-500 mt-auto"
+              style={{ transform: 'translateZ(10px)' }}
+            >
+              <span>{readTime}분</span>
+              <span>•</span>
+              <span className="group-hover:text-black transition-colors">읽기 →</span>
+            </motion.div>
+          </div>
         </div>
-
-        <div className="mb-2">
-          <motion.span
-            className={`inline-block text-sm font-medium ${getVerticalColor(vertical.slug)}`}
-            style={{ transform: 'translateZ(10px)' }}
-          >
-            {vertical.name}
-          </motion.span>
-        </div>
-
-        <motion.h3
-          className="font-serif text-xl lg:text-2xl font-bold mb-2 group-hover:text-gray-600 transition-colors line-clamp-2"
-          style={{ transform: 'translateZ(20px)' }}
-        >
-          {article.title}
-        </motion.h3>
-
-        <motion.div
-          className="flex items-center gap-3 text-sm text-gray-500"
-          style={{ transform: 'translateZ(10px)' }}
-        >
-          <span>{readTime}분</span>
-        </motion.div>
       </Link>
     </motion.div>
   );

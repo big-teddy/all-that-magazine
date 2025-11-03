@@ -31,7 +31,7 @@ export default function HeroSection({ article }: Props) {
   const imageAlt = featuredImage?.node?.altText || article.title;
 
   return (
-    <section ref={containerRef} className="relative h-[80vh] min-h-[600px] max-h-[900px] mb-20 lg:mb-32 overflow-hidden">
+    <section ref={containerRef} className="relative h-screen min-h-[700px] mb-32 lg:mb-48 overflow-hidden">
       {/* Background Image with Parallax Effect */}
       <motion.div
         className="absolute inset-0"
@@ -47,35 +47,35 @@ export default function HeroSection({ article }: Props) {
           className="object-cover"
           priority
           sizes="100vw"
-          quality={90}
+          quality={95}
         />
-        {/* Gradient Overlay with opacity parallax */}
+        {/* Gradient Overlay - stronger for better text contrast */}
         <motion.div
-          className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"
+          className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/30"
           style={{ opacity }}
         />
       </motion.div>
 
-      {/* Content */}
-      <div className="relative h-full max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 flex items-end pb-16 lg:pb-24">
-        <div className="max-w-4xl">
+      {/* Content - Oversized Typography */}
+      <div className="relative h-full max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 flex items-end pb-20 lg:pb-32">
+        <div className="max-w-6xl">
           {/* Vertical Badge */}
           <motion.div
-            className="mb-6"
+            className="mb-8 lg:mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <span className={`inline-block px-4 py-2 rounded-full text-sm font-bold bg-white border-2 ${getVerticalColor(vertical.slug)}`}>
+            <span className={`inline-block px-5 py-2.5 rounded-full text-sm lg:text-base font-bold bg-white border-2 ${getVerticalColor(vertical.slug)} uppercase tracking-wider`}>
               {vertical.name}
             </span>
           </motion.div>
 
-          {/* Title */}
+          {/* Title - Oversized, Dramatic */}
           <Link href={href}>
             <motion.h1
-              className="font-serif text-4xl sm:text-5xl lg:text-display font-black text-white mb-6 hover:text-gray-200 transition-colors cursor-pointer"
-              initial={{ opacity: 0, y: 30 }}
+              className="font-serif text-5xl sm:text-6xl lg:text-[96px] xl:text-[120px] font-black text-white mb-8 lg:mb-12 hover:text-gray-200 transition-colors cursor-pointer leading-[0.95] tracking-tighter"
+              initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
             >
@@ -83,9 +83,9 @@ export default function HeroSection({ article }: Props) {
             </motion.h1>
           </Link>
 
-          {/* Excerpt */}
+          {/* Excerpt - Elegant, spacious */}
           <motion.p
-            className="text-xl lg:text-2xl text-gray-200 mb-8 line-clamp-2 leading-relaxed"
+            className="text-xl lg:text-3xl text-gray-100 mb-10 lg:mb-12 max-w-3xl line-clamp-2 leading-relaxed font-light"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
@@ -93,19 +93,19 @@ export default function HeroSection({ article }: Props) {
             {customExcerpt}
           </motion.p>
 
-          {/* Meta & CTA */}
+          {/* Meta & CTA - Clean, minimal */}
           <motion.div
-            className="flex flex-wrap items-center gap-6"
+            className="flex flex-wrap items-center gap-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
           >
-            <div className="flex items-center gap-4 text-white/90">
-              <span className="text-sm font-medium">{readTime}분</span>
+            <div className="flex items-center gap-6 text-white/90 text-base lg:text-lg">
+              <span className="font-medium">{readTime}분 읽기</span>
               {isPremium && (
                 <motion.span
-                  className="text-yellow-400 font-bold"
-                  animate={{ scale: [1, 1.1, 1] }}
+                  className="px-3 py-1 bg-yellow-400/90 text-black text-sm font-bold rounded-full"
+                  animate={{ scale: [1, 1.05, 1] }}
                   transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
                 >
                   ★ 프리미엄
@@ -115,38 +115,38 @@ export default function HeroSection({ article }: Props) {
 
             <Link
               href={href}
-              className="group inline-flex items-center gap-2 bg-white text-black px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition-all transform hover:scale-105 hover:shadow-xl"
+              className="group inline-flex items-center gap-3 bg-white text-black px-10 py-4 rounded-full font-bold text-base lg:text-lg hover:bg-gray-100 transition-all transform hover:scale-105 hover:shadow-2xl"
             >
               기사 읽기
               <motion.svg
-                className="w-5 h-5"
+                className="w-6 h-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
                 animate={{ x: [0, 5, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 2 }}
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </motion.svg>
             </Link>
           </motion.div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - Refined */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-12 left-1/2 transform -translate-x-1/2"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1 }}
       >
         <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="text-white/70"
+          animate={{ y: [0, 12, 0] }}
+          transition={{ duration: 2.5, repeat: Infinity }}
+          className="text-white/60"
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
         </motion.div>
       </motion.div>
