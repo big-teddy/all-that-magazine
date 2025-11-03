@@ -76,7 +76,7 @@ export default async function VerticalPage({ params }: Props) {
       <div className={`relative bg-gradient-to-br ${verticalInfo.gradient} text-white py-20 lg:py-32 mb-16`}>
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <h1 className="font-serif text-5xl lg:text-7xl font-black mb-6">
+            <h1 className="font-serif text-5xl lg:text-display font-black mb-6">
               {verticalInfo.title}
             </h1>
             <p className="text-xl lg:text-2xl text-white/90 leading-relaxed">
@@ -118,7 +118,7 @@ export default async function VerticalPage({ params }: Props) {
                 </span>
               </div>
 
-              <h3 className="font-serif text-3xl lg:text-5xl font-black mb-6 leading-tight">
+              <h3 className="font-serif text-3xl lg:text-section font-black mb-6">
                 {featuredArticle.title}
               </h3>
 

@@ -12,6 +12,7 @@ const notoSerif = Noto_Serif_KR({
   weight: ['400', '500', '600', '700', '900'],
   variable: '--font-serif',
   display: 'swap',
+  preload: true,
 });
 
 // Korean-optimized sans-serif font for body text
@@ -20,6 +21,7 @@ const notoSans = Noto_Sans_KR({
   weight: ['400', '500', '600', '700'],
   variable: '--font-sans',
   display: 'swap',
+  preload: true,
 });
 
 export const metadata: Metadata = {

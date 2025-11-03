@@ -50,12 +50,12 @@ const config: Config = {
         body: ['var(--font-sans)', 'Noto Sans KR', 'system-ui', 'sans-serif'],
       },
       fontSize: {
-        // Typography Scale from Figma Design System (Perfect Fourth - 1.333 ratio)
-        'display': ['76px', { lineHeight: '1.1', fontWeight: '900' }],  // H1 Hero Display
-        'section': ['43px', { lineHeight: '1.2', fontWeight: '700' }],  // H2 Section
-        'subheading': ['28px', { lineHeight: '1.3', fontWeight: '600' }], // H3 Subheading
-        'body': ['18px', { lineHeight: '1.7', fontWeight: '400' }],     // Body Copy (Desktop preferred)
-        'caption': ['13px', { lineHeight: '1.5', fontWeight: '400' }],  // Captions/Metadata
+        // Typography Scale - Korean Optimized
+        'display': ['64px', { lineHeight: '1.3', letterSpacing: '-0.01em', fontWeight: '900' }],  // H1 Hero Display (reduced from 76px)
+        'section': ['40px', { lineHeight: '1.4', letterSpacing: '-0.01em', fontWeight: '700' }],  // H2 Section (reduced from 43px)
+        'subheading': ['28px', { lineHeight: '1.4', letterSpacing: '-0.01em', fontWeight: '600' }], // H3 Subheading
+        'body': ['18px', { lineHeight: '1.75', letterSpacing: '-0.015em', fontWeight: '400' }],   // Body Copy - Korean optimized
+        'caption': ['14px', { lineHeight: '1.6', letterSpacing: '-0.01em', fontWeight: '400' }],  // Captions (increased from 13px)
         // Standard scale
         'xs': '0.75rem',     // 12px
         'sm': '0.875rem',    // 14px
@@ -66,6 +66,15 @@ const config: Config = {
         '3xl': '2.667rem',   // 43px
         '4xl': '3.556rem',   // 57px
         '5xl': '4.741rem',   // 76px
+      },
+      letterSpacing: {
+        'tightest': '-0.025em',
+        'tighter': '-0.02em',
+        'tight': '-0.015em',
+        'normal': '-0.01em',  // Korean body text default
+        'wide': '0em',
+        'wider': '0.025em',
+        'widest': '0.05em',
       },
       spacing: {
         // 8px base unit from Figma Grid System

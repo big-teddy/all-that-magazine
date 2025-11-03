@@ -99,7 +99,7 @@ export default function ArticleCard({ article, variant }: Props) {
           </div>
 
           <motion.h3
-            className="font-serif text-3xl lg:text-4xl font-black mb-3 group-hover:text-gray-600 transition-colors"
+            className="font-serif text-3xl lg:text-section font-black mb-3 group-hover:text-gray-600 transition-colors"
             style={{ transform: 'translateZ(30px)' }}
           >
             {article.title}

@@ -58,7 +58,7 @@ export default function HeroSection({ article }: Props) {
           {/* Title */}
           <Link href={href}>
             <motion.h1
-              className="font-serif text-4xl sm:text-5xl lg:text-7xl font-black text-white mb-6 leading-tight hover:text-gray-200 transition-colors cursor-pointer"
+              className="font-serif text-4xl sm:text-5xl lg:text-display font-black text-white mb-6 hover:text-gray-200 transition-colors cursor-pointer"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
