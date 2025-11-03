@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALL THAT Design System - Figma Template</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lora:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f5f5;
+            color: #1A292F;
+            line-height: 1.6;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .header-logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 64px;
+            color: #1A292F;
+            text-align: center;
+            line-height: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .header-subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Section */
+        .section {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #1A292F;
+        }
+
+        .section-description {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        /* Color Swatches */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .color-swatch {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .color-swatch:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .color-box {
+            height: 140px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .color-check {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .color-swatch:active .color-check {
+            display: flex;
+        }
+
+        .color-info {
+            padding: 16px;
+            background: #fafafa;
+        }
+
+        .color-name {
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .color-values {
+            font-size: 12px;
+            color: #666;
+            font-family: 'Courier New', monospace;
+        }
+
+        .color-values div {
+            margin-bottom: 2px;
+        }
+
+        /* Typography Scale */
+        .type-scale {
+            display: grid;
+            gap: 30px;
+        }
+
+        .type-sample {
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 30px;
+        }
+
+        .type-sample:last-child {
+            border-bottom: none;
+        }
+
+        .type-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 12px;
+            background: #f8f8f8;
+            border-radius: 6px;
+        }
+
+        .type-label {
+            font-weight: 600;
+            color: #1A292F;
+        }
+
+        .type-specs {
+            font-size: 12px;
+            color: #666;
+            font-family: 'Courier New', monospace;
+        }
+
+        .type-demo {
+            padding: 20px;
+        }
+
+        /* Logo Variations */
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .logo-variant {
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .logo-variant-label {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo-display {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            color: #1A292F;
+            line-height: 0.9;
+        }
+
+        .logo-stacked {
+            font-size: 72px;
+        }
+
+        .logo-horizontal {
+            font-size: 56px;
+        }
+
+        .logo-icon {
+            font-size: 80px;
+        }
+
+        .dark-bg {
+            background: #1A292F;
+        }
+
+        .dark-bg .logo-display {
+            color: white;
+        }
+
+        .dark-bg .logo-variant-label {
+            color: #aaa;
+        }
+
+        /* Components */
+        .component-grid {
+            display: grid;
+            gap: 30px;
+        }
+
+        .component {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 30px;
+        }
+
+        .component-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background: #1A292F;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2a3a4f;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #1A292F;
+            border-color: #1A292F;
+        }
+
+        .btn-secondary:hover {
+            background: #1A292F;
+            color: white;
+        }
+
+        /* Vertical Badges */
+        .vertical-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .badge {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .badge-well { background: #88A896; color: white; }
+        .badge-tech { background: #6B9BD1; color: white; }
+        .badge-life { background: #E8907E; color: white; }
+        .badge-beauty { background: #D4A5A5; color: white; }
+        .badge-space { background: #5A5A5A; color: white; }
+        .badge-table { background: #D4A574; color: white; }
+
+        /* Magazine Cover Template */
+        .cover-template {
+            aspect-ratio: 8.5/11;
+            max-width: 400px;
+            background: #FAF9F6;
+            padding: 40px;
+            position: relative;
+            border: 1px solid #ddd;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+
+        .cover-logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 48px;
+            line-height: 0.9;
+            color: #1A292F;
+            margin-bottom: 8px;
+        }
+
+        .cover-vertical {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 24px;
+            color: #88A896;
+            margin-bottom: 40px;
+        }
+
+        .cover-headline {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 36px;
+            line-height: 1.1;
+            color: #1A292F;
+            margin-top: auto;
+        }
+
+        .cover-meta {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            right: 40px;
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            color: #666;
+        }
+
+        /* Grid System Visual */
+        .grid-demo {
+            background: #FAF9F6;
+            padding: 40px;
+            border-radius: 8px;
+        }
+
+        .grid-columns {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .grid-col {
+            height: 80px;
+            background: #1A292F;
+            opacity: 0.1;
+            border-radius: 4px;
+        }
+
+        .grid-col:nth-child(3n) {
+            opacity: 0.2;
+        }
+
+        .grid-col:nth-child(6n) {
+            opacity: 0.3;
+        }
+
+        .grid-info {
+            text-align: center;
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* Utility */
+        .copy-notification {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #1A292F;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s;
+            pointer-events: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .copy-notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .download-btn {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: #1A292F;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.2s;
+            z-index: 1000;
+        }
+
+        .download-btn:hover {
+            background: #2a3a4f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+        }
+    </style>
+</head>
+<body>
+    <div class="copy-notification" id="copyNotification">✓ Copied to clipboard!</div>
+    
+    <a href="#" class="download-btn" onclick="window.print(); return false;">💾 Save as PDF</a>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-logo">ALL<br>THAT</div>
+            <div class="header-subtitle">Design System Template • Figma Ready • Version 1.0</div>
+        </div>
+
+        <!-- Color System -->
+        <div class="section">
+            <h2 class="section-title">Color System</h2>
+            <p class="section-description">Click any swatch to copy HEX value to clipboard. Follow 60-30-10 rule: 60% neutral base, 30% primary, 10% accent.</p>
+            
+            <h3 style="margin: 30px 0 15px; font-size: 18px; font-weight: 600;">Core Colors</h3>
+            <div class="color-grid">
+                <div class="color-swatch" data-color="#1A292F">
+                    <div class="color-box" style="background: #1A292F;">
+                        <div class="color-check">✓</div>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Deep Navy</div>
+                        <div class="color-values">
+                            <div>HEX: #1A292F</div>
+                            <div>RGB: 26, 41, 47</div>
+                            <div>CMYK: 45, 13, 0, 82</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="color-swatch" data-color="#FAF9F6">
+                    <div class="color-box" style="background: #FAF9F6; border: 1px solid #ddd;">
+                        <div class="color-check">✓</div>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Warm White</div>
+                        <div class="color-values">
+                            <div>HEX: #FAF9F6</div>
+                            <div>RGB: 250, 249, 246</div>
+                            <div>CMYK: 0, 0, 2, 2</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="color-swatch" data-color="#E6E2D3">
+                    <div class="color-box" style="background: #E6E2D3;">
+                        <div class="color-check">✓</div>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Soft Beige</div>
+                        <div class="color-values">
+                            <div>HEX: #E6E2D3</div>
+                            <div>RGB: 230, 226, 211</div>
+                            <div>CMYK: 0, 2, 8, 10</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="margin: 40px 0 15px; font-size: 18px; font-weight: 600;">Vertical Colors</h3>
+            <div class="color-grid">
+                <div class="color-swatch" data-color="#88A896">
+                    <div class="color-box" style="background: #88A896;">
+                        <div class="color-check">✓</div>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Sage Green (WELL)</div>
+                        <div class="color-values">
+                            <div>HEX: #88A896</div>
+                            <div>RGB: 136, 168, 150</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="color-swatch" data-color="#6B9BD1">
+                    <div class="color-box" style="background: #6B9BD1;">
+                        <div class="color-check">✓</div>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Electric Blue (TECH)</div>
+                        <div class="color-values">
+                            <div>HEX: #6B9BD1</div>
+                            <div>RGB: 107, 155, 209</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="color-swatch" data-color="#E8907E">
+                    <div class="color-box" style="background: #E8907E;">
+                        <div class="color-check">✓</div>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Coral (LIFE)</div>
+                        <div class="color-values">
+                            <div>HEX: #E8907E</div>
+                            <div>RGB: 232, 144, 126</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="color-swatch" data-color="#D4A5A5">
+                    <div class="color-box" style="background: #D4A5A5;">
+                        <div class="color-check">✓</div>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Dusty Rose (BEAUTY)</div>
+                        <div class="color-values">
+                            <div>HEX: #D4A5A5</div>
+                            <div>RGB: 212, 165, 165</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="color-swatch" data-color="#5A5A5A">
+                    <div class="color-box" style="background: #5A5A5A;">
+                        <div class="color-check">✓</div>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Charcoal (SPACE)</div>
+                        <div class="color-values">
+                            <div>HEX: #5A5A5A</div>
+                            <div>RGB: 90, 90, 90</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="color-swatch" data-color="#D4A574">
+                    <div class="color-box" style="background: #D4A574;">
+                        <div class="color-check">✓</div>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Amber (TABLE)</div>
+                        <div class="color-values">
+                            <div>HEX: #D4A574</div>
+                            <div>RGB: 212, 165, 116</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Typography -->
+        <div class="section">
+            <h2 class="section-title">Typography Scale</h2>
+            <p class="section-description">System follows Golden Ratio (1.618) for desktop, Major Third (1.25) for mobile.</p>
+            
+            <div class="type-scale">
+                <div class="type-sample">
+                    <div class="type-meta">
+                        <span class="type-label">Display / H1</span>
+                        <span class="type-specs">Playfair Display • 900 • 68px (48-72pt print)</span>
+                    </div>
+                    <div class="type-demo">
+                        <div style="font-family: 'Playfair Display', serif; font-weight: 900; font-size: 68px; line-height: 1.1; color: #1A292F;">
+                            Bold Minimalism in Action
+                        </div>
+                    </div>
+                </div>
+
+                <div class="type-sample">
+                    <div class="type-meta">
+                        <span class="type-label">Section Heading / H2</span>
+                        <span class="type-specs">Playfair Display • 700 • 42px (36pt print)</span>
+                    </div>
+                    <div class="type-demo">
+                        <div style="font-family: 'Playfair Display', serif; font-weight: 700; font-size: 42px; line-height: 1.2; color: #1A292F;">
+                            The Future of Wellness Technology
+                        </div>
+                    </div>
+                </div>
+
+                <div class="type-sample">
+                    <div class="type-meta">
+                        <span class="type-label">Subheading / H3</span>
+                        <span class="type-specs">Playfair Display • 600 • 28px (24pt print)</span>
+                    </div>
+                    <div class="type-demo">
+                        <div style="font-family: 'Playfair Display', serif; font-weight: 600; font-size: 28px; line-height: 1.3; color: #1A292F;">
+                            A Global Perspective on Mindful Living
+                        </div>
+                    </div>
+                </div>
+
+                <div class="type-sample">
+                    <div class="type-meta">
+                        <span class="type-label">Body Copy</span>
+                        <span class="type-specs">Lora • 400 • 16px (11pt print) • Leading 1.6</span>
+                    </div>
+                    <div class="type-demo">
+                        <div style="font-family: 'Lora', serif; font-weight: 400; font-size: 16px; line-height: 1.6; color: #1A292F;">
+                            In the intersection of wellness and technology, new paradigms are emerging that challenge our understanding of what it means to live well in the digital age. From AI-powered meditation apps to biometric wearables that track our every physiological fluctuation, the quantified self movement has reached unprecedented sophistication. Yet amid this technological abundance, a countermovement toward intentional disconnection and analog experiences continues to gain momentum.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="type-sample">
+                    <div class="type-meta">
+                        <span class="type-label">Captions / Metadata</span>
+                        <span class="type-specs">Inter • 400 • 13px (9pt print)</span>
+                    </div>
+                    <div class="type-demo">
+                        <div style="font-family: 'Inter', sans-serif; font-weight: 400; font-size: 13px; line-height: 1.5; color: #666;">
+                            Photography by Sarah Chen • Styling by Marcus Kim • Issue 01, Spring 2025 • Page 42
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logo Variations -->
+        <div class="section">
+            <h2 class="section-title">Logo Variations</h2>
+            <p class="section-description">Six core variations for maximum flexibility. Minimum sizes: Print 25mm / Digital 80px / Favicon 32px.</p>
+            
+            <div class="logo-grid">
+                <div class="logo-variant">
+                    <div class="logo-variant-label">Primary Stacked</div>
+                    <div class="logo-display logo-stacked">ALL<br>THAT</div>
+                </div>
+
+                <div class="logo-variant dark-bg">
+                    <div class="logo-variant-label">Reversed</div>
+                    <div class="logo-display logo-stacked">ALL<br>THAT</div>
+                </div>
+
+                <div class="logo-variant">
+                    <div class="logo-variant-label">Horizontal</div>
+                    <div class="logo-display logo-horizontal">ALL THAT</div>
+                </div>
+
+                <div class="logo-variant">
+                    <div class="logo-variant-label">AT Icon</div>
+                    <div class="logo-display logo-icon">@</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Components -->
+        <div class="section">
+            <h2 class="section-title">UI Components</h2>
+            <p class="section-description">Reusable elements maintaining brand consistency across digital touchpoints.</p>
+            
+            <div class="component-grid">
+                <div class="component">
+                    <div class="component-label">Buttons</div>
+                    <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                        <a href="#" class="btn btn-primary">Primary Action</a>
+                        <a href="#" class="btn btn-secondary">Secondary Action</a>
+                    </div>
+                </div>
+
+                <div class="component">
+                    <div class="component-label">Vertical Badges</div>
+                    <div class="vertical-badges">
+                        <span class="badge badge-well">Well</span>
+                        <span class="badge badge-tech">Tech</span>
+                        <span class="badge badge-life">Life</span>
+                        <span class="badge badge-beauty">Beauty</span>
+                        <span class="badge badge-space">Space</span>
+                        <span class="badge badge-table">Table</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid System -->
+        <div class="section">
+            <h2 class="section-title">Grid System</h2>
+            <p class="section-description">12-column modular grid. Gutters: 16-20px (digital) / 6-7mm (print). Base unit: 8px.</p>
+            
+            <div class="grid-demo">
+                <div class="grid-columns">
+                    <div class="grid-col"></div>
+                    <div class="grid-col"></div>
+                    <div class="grid-col"></div>
+                    <div class="grid-col"></div>
+                    <div class="grid-col"></div>
+                    <div class="grid-col"></div>
+                    <div class="grid-col"></div>
+                    <div class="grid-col"></div>
+                    <div class="grid-col"></div>
+                    <div class="grid-col"></div>
+                    <div class="grid-col"></div>
+                    <div class="grid-col"></div>
+                </div>
+                <div class="grid-info">
+                    <strong>12-Column Grid</strong> • Flexible for 2, 3, 4, or 6 column layouts<br>
+                    Common patterns: 8-4 split (main + sidebar), 6-6 split (balanced), 4-4-4 (three-column)
+                </div>
+            </div>
+        </div>
+
+        <!-- Magazine Cover Template -->
+        <div class="section">
+            <h2 class="section-title">Magazine Cover Template</h2>
+            <p class="section-description">Example composition following brand guidelines. 60% white space minimum, bold typography, vertical color coding.</p>
+            
+            <div style="display: flex; justify-content: center;">
+                <div class="cover-template">
+                    <div class="cover-logo">ALL<br>THAT</div>
+                    <div class="cover-vertical">WELL</div>
+                    <div style="flex: 1;"></div>
+                    <div class="cover-headline">The New Science of Sleep</div>
+                    <div class="cover-meta">Issue 01 • Spring 2025 • $15</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="section" style="text-align: center; padding: 60px 40px;">
+            <div style="font-family: 'Playfair Display', serif; font-weight: 900; font-size: 36px; margin-bottom: 16px;">
+                ALL THAT
+            </div>
+            <div style="color: #666; font-size: 14px; line-height: 1.8;">
+                Design System Template • Version 1.0 • 2025<br>
+                For questions: brand@allthatmagazine.com<br>
+                <br>
+                <strong>Google Fonts Used:</strong><br>
+                Playfair Display • Lora • Inter<br>
+                <a href="https://fonts.google.com" target="_blank" style="color: #1A292F;">fonts.google.com</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Copy to clipboard functionality
+        document.querySelectorAll('.color-swatch').forEach(swatch => {
+            swatch.addEventListener('click', function() {
+                const color = this.getAttribute('data-color');
+                
+                // Copy to clipboard
+                navigator.clipboard.writeText(color).then(() => {
+                    // Show notification
+                    const notification = document.getElementById('copyNotification');
+                    notification.classList.add('show');
+                    
+                    setTimeout(() => {
+                        notification.classList.remove('show');
+                    }, 2000);
+                });
+            });
+        });
+
+        // Add hover effects
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+            });
+        });
+    </script>
+</body>
+</html>

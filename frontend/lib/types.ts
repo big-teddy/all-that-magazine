@@ -19,11 +19,13 @@ export interface Article {
   };
   articleFields: {
     featuredImage: {
-      sourceUrl: string;
-      altText: string;
-      mediaDetails: {
-        width: number;
-        height: number;
+      node: {
+        sourceUrl: string;
+        altText: string;
+        mediaDetails: {
+          width: number;
+          height: number;
+        };
       };
     };
     customExcerpt: string;

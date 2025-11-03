@@ -14,6 +14,10 @@ export default function ArticleCard({ article, variant }: Props) {
 
   const href = `/${vertical.slug}/${article.slug}`;
 
+  // Fallback image if no featured image
+  const imageUrl = featuredImage?.node?.sourceUrl || 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=800&fit=crop';
+  const imageAlt = featuredImage?.node?.altText || article.title;
+
   if (variant === 'hero') {
     return (
       <Link
@@ -22,8 +26,8 @@ export default function ArticleCard({ article, variant }: Props) {
       >
         <div className="relative aspect-video mb-6 rounded-lg overflow-hidden">
           <Image
-            src={featuredImage.sourceUrl}
-            alt={featuredImage.altText || article.title}
+            src={imageUrl}
+            alt={imageAlt}
             fill
             className="object-cover transition-transform duration-300 group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
@@ -58,8 +62,8 @@ export default function ArticleCard({ article, variant }: Props) {
     >
       <div className="relative aspect-[4/3] mb-4 rounded-lg overflow-hidden">
         <Image
-          src={featuredImage.sourceUrl}
-          alt={featuredImage.altText || article.title}
+          src={imageUrl}
+          alt={imageAlt}
           fill
           className="object-cover transition-transform duration-300 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 300px"

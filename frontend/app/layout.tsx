@@ -1,19 +1,26 @@
 import type { Metadata } from 'next';
-import { Playfair_Display, Inter } from 'next/font/google';
+import { Playfair_Display, Lora, Inter } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import './globals.css';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
-  weight: ['400', '700', '900'],
+  weight: ['400', '600', '700', '900'],
   variable: '--font-playfair',
+  display: 'swap',
+});
+
+const lora = Lora({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-lora',
   display: 'swap',
 });
 
 const inter = Inter({
   subsets: ['latin'],
-  weight: ['400', '500', '700'],
+  weight: ['400', '500', '600', '700'],
   variable: '--font-inter',
   display: 'swap',
 });
@@ -52,8 +59,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko" className={`${playfair.variable} ${inter.variable}`}>
-      <body className="font-sans antialiased bg-brand-white text-brand-black">
+    <html lang="ko" className={`${playfair.variable} ${lora.variable} ${inter.variable}`}>
+      <body className="font-sans antialiased bg-brand-warm-white text-brand-navy">
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />

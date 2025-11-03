@@ -38,6 +38,8 @@ add_action('plugins_loaded', function() {
     new ATM_Setup_ACF_Fields();
     new ATM_Setup_Settings();
     new ATM_Setup_Admin_Page();
+    $rest_api = new ATM_Setup_REST_API();
+    $rest_api->__init();
 });
 
 // Activation

@@ -26,11 +26,13 @@ export const GET_ALL_ARTICLES = `
           }
           articleFields {
             featuredImage {
-              sourceUrl
-              altText
-              mediaDetails {
-                width
-                height
+              node {
+                sourceUrl
+                altText
+                mediaDetails {
+                  width
+                  height
+                }
               }
             }
             customExcerpt
@@ -48,47 +50,39 @@ export const GET_ALL_ARTICLES = `
 `;
 
 export const GET_ARTICLES_BY_VERTICAL = `
-  query GetArticlesByVertical($vertical: String!, $first: Int = 10) {
-    articles(
-      first: $first
-      where: {
-        taxQuery: {
-          taxArray: [{
-            taxonomy: VERTICAL
-            terms: [$vertical]
-            field: SLUG
-          }]
-        }
-        orderby: { field: DATE, order: DESC }
-      }
-    ) {
-      edges {
-        node {
-          id
-          databaseId
-          title
-          slug
-          excerpt
-          date
-          verticals {
-            nodes {
-              id
-              name
-              slug
-            }
-          }
-          articleFields {
-            featuredImage {
-              sourceUrl
-              altText
-              mediaDetails {
-                width
-                height
+  query GetArticlesByVertical($vertical: ID!, $first: Int = 10) {
+    vertical(id: $vertical, idType: SLUG) {
+      articles(first: $first) {
+        edges {
+          node {
+            id
+            databaseId
+            title
+            slug
+            excerpt
+            date
+            verticals {
+              nodes {
+                id
+                name
+                slug
               }
             }
-            customExcerpt
-            readTime
-            isPremium
+            articleFields {
+              featuredImage {
+                node {
+                  sourceUrl
+                  altText
+                  mediaDetails {
+                    width
+                    height
+                  }
+                }
+              }
+              customExcerpt
+              readTime
+              isPremium
+            }
           }
         }
       }

@@ -9,37 +9,58 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Core Brand Colors (from Figma Design System)
         brand: {
-          black: '#000000',
-          white: '#FFFFFF',
-          neutral: '#E5E1DA',
+          navy: '#1A292F',        // Deep Navy - Primary
+          'warm-white': '#FAF9F6', // Warm White - Background
+          beige: '#E6E2D3',        // Soft Beige - Neutral
+          black: '#1A292F',        // Alias for navy
+          white: '#FAF9F6',        // Alias for warm white
         },
+        // Vertical Colors (from Figma Design System)
         wellness: {
-          DEFAULT: '#4CAF50',
-          light: '#81C784',
-          dark: '#388E3C',
-        },
-        lifestyle: {
-          DEFAULT: '#9C27B0',
-          light: '#BA68C8',
-          dark: '#7B1FA2',
+          DEFAULT: '#88A896',  // Sage Green (WELL)
+          sage: '#88A896',
         },
         tech: {
-          DEFAULT: '#2196F3',
-          light: '#64B5F6',
-          dark: '#1976D2',
+          DEFAULT: '#6B9BD1',  // Electric Blue (TECH)
+          blue: '#6B9BD1',
+        },
+        lifestyle: {
+          DEFAULT: '#E8907E',  // Coral (LIFE)
+          coral: '#E8907E',
+        },
+        beauty: {
+          DEFAULT: '#D4A5A5',  // Dusty Rose (BEAUTY)
+          rose: '#D4A5A5',
+        },
+        space: {
+          DEFAULT: '#5A5A5A',  // Charcoal (SPACE)
+          charcoal: '#5A5A5A',
+        },
+        table: {
+          DEFAULT: '#D4A574',  // Amber (TABLE)
+          amber: '#D4A574',
         },
       },
       fontFamily: {
-        serif: ['var(--font-playfair)', 'Georgia', 'serif'],
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        // Typography from Figma Design System
+        serif: ['var(--font-playfair)', 'Playfair Display', 'Georgia', 'serif'],
+        body: ['var(--font-lora)', 'Lora', 'Georgia', 'serif'],
+        sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
       },
       fontSize: {
-        // Perfect Fourth scale (1.333 ratio)
+        // Typography Scale from Figma Design System
+        'display': ['68px', { lineHeight: '1.1', fontWeight: '900' }],  // H1 Display
+        'section': ['42px', { lineHeight: '1.2', fontWeight: '700' }],  // H2 Section
+        'subheading': ['28px', { lineHeight: '1.3', fontWeight: '600' }], // H3 Subheading
+        'body': ['16px', { lineHeight: '1.6', fontWeight: '400' }],     // Body Copy
+        'caption': ['13px', { lineHeight: '1.5', fontWeight: '400' }],  // Captions/Metadata
+        // Standard scale
         'xs': '0.75rem',     // 12px
         'sm': '0.875rem',    // 14px
         'base': '1rem',      // 16px
-        'lg': '1.125rem',    // 18px - body text
+        'lg': '1.125rem',    // 18px
         'xl': '1.5rem',      // 24px
         '2xl': '2rem',       // 32px
         '3xl': '2.667rem',   // 43px
@@ -47,6 +68,7 @@ const config: Config = {
         '5xl': '4.741rem',   // 76px
       },
       spacing: {
+        // 8px base unit from Figma Grid System
         '18': '4.5rem',   // 72px
         '22': '5.5rem',   // 88px
         '26': '6.5rem',   // 104px
@@ -56,11 +78,24 @@ const config: Config = {
         '8xl': '1440px',
       },
       gridTemplateColumns: {
+        // 12-column grid from Figma Design System
+        '12': 'repeat(12, minmax(0, 1fr))',
         '16': 'repeat(16, minmax(0, 1fr))',
+      },
+      borderRadius: {
+        // From Figma component design
+        'sm': '4px',
+        'DEFAULT': '8px',
+        'md': '8px',
+        'lg': '12px',
+        'xl': '20px',
+        '2xl': '24px',
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 };
 
 export default config;
