@@ -18,7 +18,11 @@
 
   /* Prose styles for article content */
   .prose {
-    @apply max-w-none;
+    @apply max-w-none font-sans;
+  }
+
+  .prose h1 {
+    @apply font-serif;
   }
 
   .prose h2 {
@@ -29,12 +33,28 @@
     @apply text-2xl mt-8 mb-4 font-serif;
   }
 
+  .prose h4, .prose h5, .prose h6 {
+    @apply font-serif;
+  }
+
   .prose p {
-    @apply font-body text-lg leading-relaxed mb-6;
+    @apply font-sans text-lg leading-relaxed mb-6;
   }
 
   .prose li {
-    @apply font-body text-lg leading-relaxed;
+    @apply font-sans text-lg leading-relaxed;
+  }
+
+  .prose strong, .prose b {
+    @apply font-sans;
+  }
+
+  .prose em, .prose i {
+    @apply font-sans;
+  }
+
+  .prose span {
+    @apply font-sans;
   }
 
   .prose a {
