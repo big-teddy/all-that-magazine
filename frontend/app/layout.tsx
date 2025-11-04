@@ -63,6 +63,12 @@ export default function RootLayout({
   return (
     <ViewTransitions>
       <html lang="ko" className={`${notoSerif.variable} ${notoSans.variable}`}>
+        <head>
+          {/* Preconnect to external domains for faster loading */}
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+          <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        </head>
         <body className="font-sans antialiased bg-brand-warm-white text-brand-navy" style={{ fontFamily: 'var(--font-sans)' }}>
           <CustomCursor />
           <ReadingProgress />

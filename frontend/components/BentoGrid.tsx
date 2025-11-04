@@ -93,6 +93,9 @@ function BentoCard({ article, pattern, index, inView }: BentoCardProps) {
               fill
               className="object-cover brightness-95 group-hover:brightness-100 transition-all duration-700"
               sizes={isLarge ? '(max-width: 768px) 100vw, 66vw' : '(max-width: 768px) 100vw, 33vw'}
+              priority={index === 0}
+              loading={index === 0 ? 'eager' : 'lazy'}
+              quality={85}
             />
           </motion.div>
 

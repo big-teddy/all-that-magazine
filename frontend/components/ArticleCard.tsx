@@ -74,6 +74,8 @@ export default function ArticleCard({ article, variant }: Props) {
                 fill
                 className="object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-700"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 800px"
+                loading="lazy"
+                quality={85}
               />
             </motion.div>
 
@@ -162,7 +164,9 @@ export default function ArticleCard({ article, variant }: Props) {
                 alt={imageAlt}
                 fill
                 className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                sizes="128px"
+                sizes="(max-width: 768px) 112px, 128px"
+                loading="lazy"
+                quality={75}
               />
             </motion.div>
             {isPremium && (

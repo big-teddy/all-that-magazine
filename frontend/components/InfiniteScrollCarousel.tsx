@@ -108,7 +108,9 @@ function CarouselCard({ article }: CarouselCardProps) {
             alt={imageAlt}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-700"
-            sizes="380px"
+            sizes="(max-width: 768px) 320px, 380px"
+            loading="lazy"
+            quality={80}
           />
 
           {/* Overlay gradient */}
