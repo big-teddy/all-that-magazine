@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const excerpt = article.articleFields.customExcerpt || article.excerpt || '';
     const readTime = article.articleFields.readTime || 5;
 
-    return {
+    const metadata: Metadata = {
       title: `${article.title} | ${verticalName} | All That Magazine`,
       description: excerpt,
       keywords: [article.title, verticalName, '웰니스', '라이프스타일', '테크', 'All That Magazine'],
@@ -56,7 +56,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         description: excerpt,
         siteName: 'All That Magazine',
         publishedTime: article.date,
-        modifiedTime: article.modified,
+        ...(article.modified && { modifiedTime: article.modified }),
         authors: ['All That Magazine'],
         tags: [verticalName],
         images: imageUrl ? [
@@ -76,12 +76,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
       other: {
         'article:published_time': article.date,
-        'article:modified_time': article.modified,
+        ...(article.modified && { 'article:modified_time': article.modified }),
         'article:section': verticalName,
         'article:tag': verticalName,
         'reading-time': `${readTime}분`,
       },
     };
+
+    return metadata;
   } catch (error) {
     return {
       title: '기사를 찾을 수 없습니다 | All That Magazine',
