@@ -57,11 +57,29 @@ export default function Header() {
           >
             <motion.div
               style={{ scale: logoSize }}
-              className="font-serif text-2xl font-black hover:text-gray-600 transition-colors brand-logo"
+              className="font-serif text-2xl font-black brand-logo flex"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              ALL THAT
+              {'ALL THAT'.split('').map((char, i) => (
+                <motion.span
+                  key={i}
+                  className="inline-block"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: i * 0.05,
+                    ease: "easeOut"
+                  }}
+                  whileHover={{
+                    y: -5,
+                    transition: { duration: 0.2 }
+                  }}
+                >
+                  {char === ' ' ? '\u00A0' : char}
+                </motion.span>
+              ))}
             </motion.div>
           </Link>
 

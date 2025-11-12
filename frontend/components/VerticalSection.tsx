@@ -24,7 +24,7 @@ export default function VerticalSection({ title, slug, articles }: Props) {
 
   return (
     <section ref={ref}>
-      {/* Section Header - Oversized, Editorial Style */}
+      {/* Section Header - Oversized, Editorial Style with Kinetic Typography */}
       <motion.div
         className="flex items-end justify-between mb-12 lg:mb-16 pb-6 border-b-2 border-black"
         initial={{ opacity: 0, y: 20 }}
@@ -32,7 +32,26 @@ export default function VerticalSection({ title, slug, articles }: Props) {
         transition={{ duration: 0.6 }}
       >
         <h2 className="font-serif text-5xl lg:text-[72px] font-black tracking-tight leading-none">
-          {title}
+          {title.split('').map((char, i) => (
+            <motion.span
+              key={i}
+              className="inline-block"
+              initial={{ opacity: 0, y: 30, rotateX: -90 }}
+              animate={inView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
+              transition={{
+                duration: 0.5,
+                delay: 0.3 + i * 0.05,
+                ease: "easeOut"
+              }}
+              whileHover={{
+                y: -8,
+                color: '#4B5563',
+                transition: { duration: 0.2 }
+              }}
+            >
+              {char}
+            </motion.span>
+          ))}
         </h2>
         <Link
           href={`/${slug}`}

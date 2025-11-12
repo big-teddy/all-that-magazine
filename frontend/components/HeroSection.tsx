@@ -71,16 +71,34 @@ export default function HeroSection({ article }: Props) {
             </span>
           </motion.div>
 
-          {/* Title - Oversized, Dramatic */}
+          {/* Title - Oversized, Dramatic with Kinetic Typography */}
           <Link href={href}>
-            <motion.h1
-              className="font-serif text-5xl sm:text-6xl lg:text-[96px] xl:text-[120px] font-black text-white mb-8 lg:mb-12 hover:text-gray-200 transition-colors cursor-pointer leading-[0.95] tracking-tighter"
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-            >
-              {article.title}
-            </motion.h1>
+            <h1 className="font-serif text-5xl sm:text-6xl lg:text-[96px] xl:text-[120px] font-black text-white mb-8 lg:mb-12 cursor-pointer leading-[0.95] tracking-tighter">
+              {article.title.split(' ').map((word, wordIndex) => (
+                <span key={wordIndex} className="inline-block mr-4 lg:mr-8">
+                  {word.split('').map((char, charIndex) => (
+                    <motion.span
+                      key={charIndex}
+                      className="inline-block hover:text-gray-200 transition-colors"
+                      initial={{ opacity: 0, y: 50 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        duration: 0.6,
+                        delay: 0.3 + (wordIndex * 0.1) + (charIndex * 0.02),
+                        ease: "easeOut"
+                      }}
+                      whileHover={{
+                        y: -10,
+                        scale: 1.1,
+                        transition: { duration: 0.2 }
+                      }}
+                    >
+                      {char}
+                    </motion.span>
+                  ))}
+                </span>
+              ))}
+            </h1>
           </Link>
 
           {/* Excerpt - Elegant, spacious */}

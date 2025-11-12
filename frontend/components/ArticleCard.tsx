@@ -58,9 +58,18 @@ export default function ArticleCard({ article, variant }: Props) {
           rotateY,
           transformStyle: 'preserve-3d'
         }}
-        className="group"
+        className="group relative"
+        whileHover={{
+          scale: 1.01,
+          transition: { duration: 0.4, ease: "easeOut" }
+        }}
       >
-        <Link href={href} className="block">
+        {/* Glassmorphism overlay on hover */}
+        <motion.div
+          className="absolute -inset-4 glass rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"
+          initial={false}
+        />
+        <Link href={href} className="block relative">
           {/* Image - Larger aspect ratio for hero */}
           <div className="relative aspect-[4/3] mb-6 lg:mb-8 rounded-xl overflow-hidden">
             <motion.div
@@ -107,13 +116,29 @@ export default function ArticleCard({ article, variant }: Props) {
             </div>
           </div>
 
-          {/* Content */}
-          <motion.h3
-            className="font-serif text-3xl lg:text-[48px] font-black mb-4 lg:mb-6 group-hover:text-gray-600 transition-colors leading-[1.1] tracking-tight"
+          {/* Content with Kinetic Typography */}
+          <h3
+            className="font-serif text-3xl lg:text-[48px] font-black mb-4 lg:mb-6 leading-[1.1] tracking-tight"
             style={{ transform: 'translateZ(30px)' }}
           >
-            {article.title}
-          </motion.h3>
+            {article.title.split(' ').map((word, wordIndex) => (
+              <span key={wordIndex} className="inline-block mr-2 lg:mr-3">
+                {word.split('').map((char, charIndex) => (
+                  <motion.span
+                    key={charIndex}
+                    className="inline-block group-hover:text-gray-600 transition-colors"
+                    whileHover={{
+                      y: -3,
+                      scale: 1.05,
+                      transition: { duration: 0.2 }
+                    }}
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+              </span>
+            ))}
+          </h3>
 
           <motion.p
             className="text-lg lg:text-xl text-gray-700 mb-4 lg:mb-6 line-clamp-2 leading-relaxed"
@@ -147,9 +172,18 @@ export default function ArticleCard({ article, variant }: Props) {
         rotateY,
         transformStyle: 'preserve-3d'
       }}
-      className="group"
+      className="group relative p-4 rounded-xl transition-all duration-300"
+      whileHover={{
+        scale: 1.02,
+        transition: { duration: 0.3, ease: "easeOut" }
+      }}
     >
-      <Link href={href} className="block">
+      {/* Glassmorphism background on hover */}
+      <motion.div
+        className="absolute inset-0 glass rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
+        initial={false}
+      />
+      <Link href={href} className="block relative">
         {/* Horizontal layout for compact, elegant presentation */}
         <div className="flex gap-5">
           {/* Image */}
@@ -190,13 +224,29 @@ export default function ArticleCard({ article, variant }: Props) {
               </motion.span>
             </div>
 
-            {/* Title */}
-            <motion.h3
-              className="font-serif text-xl lg:text-2xl font-black mb-2 group-hover:text-gray-600 transition-colors line-clamp-2 leading-tight"
+            {/* Title with Kinetic Typography */}
+            <h3
+              className="font-serif text-xl lg:text-2xl font-black mb-2 line-clamp-2 leading-tight"
               style={{ transform: 'translateZ(20px)' }}
             >
-              {article.title}
-            </motion.h3>
+              {article.title.split(' ').map((word, wordIndex) => (
+                <span key={wordIndex} className="inline-block mr-1.5">
+                  {word.split('').map((char, charIndex) => (
+                    <motion.span
+                      key={charIndex}
+                      className="inline-block group-hover:text-gray-600 transition-colors"
+                      whileHover={{
+                        y: -2,
+                        scale: 1.05,
+                        transition: { duration: 0.2 }
+                      }}
+                    >
+                      {char}
+                    </motion.span>
+                  ))}
+                </span>
+              ))}
+            </h3>
 
             {/* Meta */}
             <motion.div
