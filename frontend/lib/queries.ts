@@ -100,6 +100,7 @@ export const GET_ARTICLE_BY_SLUG = `
       content
       excerpt
       date
+      modified
       author {
         node {
           name

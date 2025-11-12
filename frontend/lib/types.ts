@@ -6,6 +6,7 @@ export interface Article {
   content: string;
   excerpt: string;
   date: string;
+  modified?: string;
   author: {
     node: {
       name: string;
