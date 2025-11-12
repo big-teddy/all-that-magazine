@@ -140,4 +140,46 @@
     letter-spacing: 0.05em !important; /* Slight spacing for brand identity */
     word-break: normal !important;
   }
+
+  /* Keyboard focus styles for accessibility */
+  .focus-visible:focus-visible {
+    @apply outline-none ring-4 ring-brand-navy ring-offset-2;
+  }
+
+  /* Skip to main content link */
+  .skip-link {
+    @apply fixed top-0 left-0 z-[100] bg-brand-navy text-white px-6 py-3 font-bold rounded-br-lg transform -translate-y-full focus:translate-y-0 transition-transform;
+  }
+}
+
+/* Global focus styles for better keyboard navigation */
+*:focus-visible {
+  outline: 3px solid #1A292F; /* brand-navy */
+  outline-offset: 2px;
+}
+
+/* Remove default focus for mouse users */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Improve button focus visibility */
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #1A292F;
+  outline-offset: 2px;
+}
+
+/* Ensure interactive elements have proper cursor */
+button,
+a,
+input,
+textarea,
+select {
+  cursor: pointer;
+}
+
+input,
+textarea {
+  cursor: text;
 }

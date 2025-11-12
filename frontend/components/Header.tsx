@@ -107,7 +107,10 @@ export default function Header() {
             </motion.button>
 
             {/* Subscribe Button - Desktop with Magnetic Effect */}
-            <MagneticButton className="hidden md:block text-sm font-medium px-6 py-2.5 bg-black text-white rounded-full hover:bg-gray-800 transition-colors">
+            <MagneticButton
+              href="/subscribe"
+              className="hidden md:block text-sm font-medium px-6 py-2.5 bg-black text-white rounded-full hover:bg-gray-800 transition-colors"
+            >
               구독하기
             </MagneticButton>
 
@@ -162,13 +165,15 @@ export default function Header() {
                   </Link>
                 </motion.div>
               ))}
-              <motion.button
-                className="w-full text-sm font-medium px-4 py-3 border-2 border-brand-black rounded-lg hover:bg-brand-black hover:text-brand-white transition-colors mt-4"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                구독하기
-              </motion.button>
+              <Link href="/subscribe" onClick={() => setIsMobileMenuOpen(false)}>
+                <motion.div
+                  className="w-full text-sm font-medium px-4 py-3 border-2 border-brand-black rounded-lg hover:bg-brand-black hover:text-brand-white transition-colors mt-4 text-center cursor-pointer"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  구독하기
+                </motion.div>
+              </Link>
             </nav>
           </motion.div>
         )}

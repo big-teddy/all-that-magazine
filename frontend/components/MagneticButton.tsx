@@ -2,22 +2,24 @@
 
 import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 interface Props {
   children: React.ReactNode;
   className?: string;
   onClick?: () => void;
+  href?: string;
 }
 
 /**
  * Magnetic Button - Award-winning interaction pattern
  * Button follows cursor with smooth spring physics
  */
-export default function MagneticButton({ children, className = '', onClick }: Props) {
-  const ref = useRef<HTMLButtonElement>(null);
+export default function MagneticButton({ children, className = '', onClick, href }: Props) {
+  const ref = useRef<HTMLButtonElement | HTMLAnchorElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
     if (!ref.current) return;
 
     const rect = ref.current.getBoundingClientRect();
@@ -40,9 +42,33 @@ export default function MagneticButton({ children, className = '', onClick }: Pr
     setPosition({ x: 0, y: 0 });
   };
 
+  // If href is provided, render as Link
+  if (href) {
+    return (
+      <Link href={href} passHref legacyBehavior>
+        <motion.a
+          ref={ref as React.RefObject<HTMLAnchorElement>}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+          animate={{ x: position.x, y: position.y }}
+          transition={{
+            type: 'spring',
+            stiffness: 150,
+            damping: 15,
+            mass: 0.1,
+          }}
+          className={className}
+        >
+          {children}
+        </motion.a>
+      </Link>
+    );
+  }
+
+  // Otherwise render as button
   return (
     <motion.button
-      ref={ref}
+      ref={ref as React.RefObject<HTMLButtonElement>}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}

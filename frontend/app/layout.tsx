@@ -38,20 +38,11 @@ export const metadata: Metadata = {
     siteName: 'All That Magazine',
     title: 'All That Magazine | 프리미엄 웰니스·라이프스타일·테크',
     description: '웰니스, 라이프스타일, 기술 분야의 큐레이션된 프리미엄 콘텐츠',
-    images: [
-      {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'All That Magazine',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'All That Magazine | 프리미엄 매거진',
     description: '웰니스·라이프스타일·테크 분야의 프리미엄 콘텐츠',
-    images: ['/og-image.jpg'],
   },
 };
 
@@ -70,10 +61,14 @@ export default function RootLayout({
           <link rel="dns-prefetch" href="https://images.unsplash.com" />
         </head>
         <body className="font-sans antialiased bg-brand-warm-white text-brand-navy" style={{ fontFamily: 'var(--font-sans)' }}>
+          {/* Skip to main content for keyboard users */}
+          <a href="#main-content" className="skip-link">
+            본문으로 바로가기
+          </a>
           <CustomCursor />
           <ReadingProgress />
           <Header />
-          <main className="min-h-screen">{children}</main>
+          <main id="main-content" className="min-h-screen">{children}</main>
           <Footer />
           <Toaster />
         </body>

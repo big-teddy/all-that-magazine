@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
+import DOMPurify from 'isomorphic-dompurify';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 
@@ -13,10 +14,31 @@ export default function ArticleContent({ content }: Props) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [images, setImages] = useState<{ src: string; alt: string }[]>([]);
 
+  // Sanitize HTML content to prevent XSS attacks
+  const sanitizedContent = useMemo(() => {
+    return DOMPurify.sanitize(content, {
+      ALLOWED_TAGS: [
+        'p', 'br', 'strong', 'em', 'u', 's', 'b', 'i',
+        'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+        'ul', 'ol', 'li',
+        'a', 'img',
+        'blockquote', 'pre', 'code',
+        'table', 'thead', 'tbody', 'tr', 'th', 'td',
+        'div', 'span',
+      ],
+      ALLOWED_ATTR: [
+        'href', 'target', 'rel',
+        'src', 'alt', 'title', 'width', 'height',
+        'class', 'id',
+      ],
+      ALLOWED_URI_REGEXP: /^(?:(?:(?:f|ht)tps?|mailto|tel|callto|sms|cid|xmpp):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i,
+    });
+  }, [content]);
+
   useEffect(() => {
     // Parse content to extract images
     const parser = new DOMParser();
-    const doc = parser.parseFromString(content, 'text/html');
+    const doc = parser.parseFromString(sanitizedContent, 'text/html');
     const imgElements = doc.querySelectorAll('img');
 
     const extractedImages = Array.from(imgElements).map((img) => ({
@@ -53,13 +75,13 @@ export default function ArticleContent({ content }: Props) {
         contentElement.removeEventListener('click', handleImageClick);
       };
     }
-  }, [content]);
+  }, [sanitizedContent]);
 
   return (
     <>
       <div
         className="article-prose-content prose prose-lg prose-headings:font-serif prose-headings:font-bold prose-p:leading-relaxed prose-p:mb-6 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl prose-img:shadow-lg max-w-none mb-16"
-        dangerouslySetInnerHTML={{ __html: content }}
+        dangerouslySetInnerHTML={{ __html: sanitizedContent }}
       />
 
       {images.length > 0 && (

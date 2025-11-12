@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 export default function NewsletterSection() {
   const [email, setEmail] = useState('');
@@ -10,15 +11,36 @@ export default function NewsletterSection() {
     e.preventDefault();
     setStatus('loading');
 
-    // TODO: Implement newsletter signup API
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    try {
+      const response = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
 
-    setStatus('success');
-    setEmail('');
+      const data = await response.json();
 
-    setTimeout(() => {
-      setStatus('idle');
-    }, 3000);
+      if (!response.ok) {
+        throw new Error(data.error || '구독 처리에 실패했습니다');
+      }
+
+      setStatus('success');
+      setEmail('');
+      toast.success(data.message || '구독이 완료되었습니다!');
+
+      setTimeout(() => {
+        setStatus('idle');
+      }, 3000);
+    } catch (error) {
+      setStatus('error');
+      toast.error(error instanceof Error ? error.message : '오류가 발생했습니다');
+
+      setTimeout(() => {
+        setStatus('idle');
+      }, 3000);
+    }
   };
 
   return (

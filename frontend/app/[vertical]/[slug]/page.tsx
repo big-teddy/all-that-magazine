@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
+import type { Metadata } from 'next';
 import { fetchGraphQL } from '@/lib/wordpress';
 import { GET_ARTICLE_BY_SLUG, GET_RELATED_ARTICLES } from '@/lib/queries';
 import { SingleArticleResponse, ArticlesResponse } from '@/lib/types';
@@ -19,6 +20,74 @@ interface Props {
     vertical: string;
     slug: string;
   };
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  try {
+    const data = await fetchGraphQL<SingleArticleResponse>(GET_ARTICLE_BY_SLUG, {
+      slug: params.slug,
+    });
+
+    const article = data.articleBy;
+
+    if (!article) {
+      return {
+        title: '기사를 찾을 수 없습니다',
+        description: '요청하신 기사를 찾을 수 없습니다.',
+      };
+    }
+
+    const vertical = article.verticals.nodes[0];
+    const verticalName = vertical.name;
+    const imageUrl = article.articleFields.featuredImage?.node.sourceUrl || '';
+    const excerpt = article.articleFields.customExcerpt || article.excerpt || '';
+    const readTime = article.articleFields.readTime || 5;
+
+    return {
+      title: `${article.title} | ${verticalName} | All That Magazine`,
+      description: excerpt,
+      keywords: [article.title, verticalName, '웰니스', '라이프스타일', '테크', 'All That Magazine'],
+      authors: [{ name: 'All That Magazine' }],
+      openGraph: {
+        type: 'article',
+        locale: 'ko_KR',
+        url: `/${params.vertical}/${params.slug}`,
+        title: article.title,
+        description: excerpt,
+        siteName: 'All That Magazine',
+        publishedTime: article.date,
+        modifiedTime: article.modified,
+        authors: ['All That Magazine'],
+        tags: [verticalName],
+        images: imageUrl ? [
+          {
+            url: imageUrl,
+            width: 1200,
+            height: 630,
+            alt: article.title,
+          },
+        ] : undefined,
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: article.title,
+        description: excerpt,
+        images: imageUrl ? [imageUrl] : undefined,
+      },
+      other: {
+        'article:published_time': article.date,
+        'article:modified_time': article.modified,
+        'article:section': verticalName,
+        'article:tag': verticalName,
+        'reading-time': `${readTime}분`,
+      },
+    };
+  } catch (error) {
+    return {
+      title: '기사를 찾을 수 없습니다 | All That Magazine',
+      description: '요청하신 기사를 찾을 수 없습니다.',
+    };
+  }
 }
 
 export default async function ArticlePage({ params }: Props) {
