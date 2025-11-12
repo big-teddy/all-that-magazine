@@ -42,9 +42,9 @@ export default function Header() {
 
   return (
     <motion.header
-      style={{ backgroundColor: headerBackground, height: headerHeight }}
-      className={`sticky top-0 z-50 backdrop-blur-md border-b transition-all duration-300 ${
-        isScrolled ? 'border-gray-300 shadow-sm' : 'border-gray-200'
+      style={{ height: headerHeight }}
+      className={`sticky top-0 z-50 glass border-b transition-all duration-300 ${
+        isScrolled ? 'border-gray-300/50 shadow-lg' : 'border-transparent'
       }`}
     >
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 h-full">

@@ -56,11 +56,17 @@ export default function RootLayout({
       <html lang="ko" className={`${notoSerif.variable} ${notoSans.variable}`}>
         <head>
           {/* Preconnect to external domains for faster loading */}
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+          <link rel="preconnect" href="https://cdn.jsdelivr.net" />
           <link rel="dns-prefetch" href="https://images.unsplash.com" />
+          {/* Pretendard Variable Font - Modern Korean Typography */}
+          <link
+            rel="stylesheet"
+            as="style"
+            crossOrigin="anonymous"
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+          />
         </head>
-        <body className="font-sans antialiased bg-brand-warm-white text-brand-navy" style={{ fontFamily: 'var(--font-sans)' }}>
+        <body className="antialiased bg-brand-warm-white text-brand-navy" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard Variable", Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif' }}>
           {/* Skip to main content for keyboard users */}
           <a href="#main-content" className="skip-link">
             본문으로 바로가기
