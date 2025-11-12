@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { Noto_Serif_KR, Noto_Sans_KR } from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
 import { ViewTransitions } from 'next-view-transitions';
 import Header from '@/components/Header';
@@ -7,24 +6,6 @@ import Footer from '@/components/Footer';
 import ReadingProgress from '@/components/ReadingProgress';
 import CustomCursor from '@/components/CustomCursor';
 import './globals.css';
-
-// Korean-optimized serif font for headings
-const notoSerif = Noto_Serif_KR({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '900'],
-  variable: '--font-serif',
-  display: 'swap',
-  preload: true,
-});
-
-// Korean-optimized sans-serif font for body text
-const notoSans = Noto_Sans_KR({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-sans',
-  display: 'swap',
-  preload: true,
-});
 
 export const metadata: Metadata = {
   title: 'All That Magazine | 프리미엄 웰니스·라이프스타일·테크 매거진',
@@ -53,7 +34,7 @@ export default function RootLayout({
 }) {
   return (
     <ViewTransitions>
-      <html lang="ko" className={`${notoSerif.variable} ${notoSans.variable}`}>
+      <html lang="ko">
         <head>
           {/* Preconnect to external domains for faster loading */}
           <link rel="preconnect" href="https://cdn.jsdelivr.net" />

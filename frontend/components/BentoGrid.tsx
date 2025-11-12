@@ -123,7 +123,7 @@ function BentoCard({ article, pattern, index, inView }: BentoCardProps) {
               </motion.span>
               {isPremium && (
                 <motion.span
-                  className="inline-block px-3 py-1.5 rounded-full text-xs font-bold bg-gradient-to-r from-metallic-champagne-gold via-metallic-rose-gold to-metallic-champagne-gold text-white backdrop-blur-sm shadow-lg"
+                  className="inline-block px-3 py-1.5 rounded-full text-xs font-bold premium-badge-gradient backdrop-blur-sm shadow-lg"
                   whileHover={{ scale: 1.05, boxShadow: '0 10px 25px rgba(201, 176, 55, 0.4)' }}
                 >
                   ★ 프리미엄

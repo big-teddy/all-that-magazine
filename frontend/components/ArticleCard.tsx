@@ -102,7 +102,7 @@ export default function ArticleCard({ article, variant }: Props) {
               </motion.span>
               {isPremium && (
                 <motion.span
-                  className="inline-block px-3 lg:px-4 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-bold bg-gradient-to-r from-metallic-champagne-gold via-metallic-rose-gold to-metallic-champagne-gold text-white shadow-lg"
+                  className="inline-block px-3 lg:px-4 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-bold premium-badge-gradient shadow-lg"
                   style={{ transform: 'translateZ(20px)' }}
                   whileHover={{ scale: 1.05, boxShadow: '0 10px 25px rgba(201, 176, 55, 0.3)' }}
                 >
@@ -207,7 +207,7 @@ export default function ArticleCard({ article, variant }: Props) {
             {isPremium && (
               <div className="absolute top-2 right-2">
                 <motion.span
-                  className="inline-block px-1.5 py-0.5 rounded-full text-xs font-bold bg-gradient-to-r from-metallic-champagne-gold to-metallic-rose-gold text-white shadow-md"
+                  className="inline-block px-1.5 py-0.5 rounded-full text-xs font-bold premium-badge-gradient-sm shadow-md"
                   whileHover={{ scale: 1.1, rotate: 15 }}
                 >
                   ★

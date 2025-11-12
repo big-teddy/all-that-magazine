@@ -330,6 +330,17 @@
     background-clip: text;
   }
 
+  /* Premium badge metallic gradient backgrounds */
+  .premium-badge-gradient {
+    background: linear-gradient(90deg, #C9B037 0%, #B76E79 50%, #C9B037 100%);
+    color: white;
+  }
+
+  .premium-badge-gradient-sm {
+    background: linear-gradient(90deg, #C9B037 0%, #B76E79 100%);
+    color: white;
+  }
+
   /* Shimmer effect for loading states */
   .shimmer {
     background: linear-gradient(

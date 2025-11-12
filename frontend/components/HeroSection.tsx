@@ -124,7 +124,7 @@ export default function HeroSection({ article }: Props) {
               <span className="font-medium">{readTime}분 읽기</span>
               {isPremium && (
                 <motion.span
-                  className="px-4 py-2 bg-gradient-to-r from-metallic-champagne-gold via-metallic-rose-gold to-metallic-champagne-gold text-white text-sm font-bold rounded-full shadow-2xl"
+                  className="px-4 py-2 premium-badge-gradient text-sm font-bold rounded-full shadow-2xl"
                   animate={{
                     scale: [1, 1.05, 1],
                     boxShadow: [
