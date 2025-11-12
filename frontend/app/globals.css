@@ -33,6 +33,14 @@
   --color-brand-beige: #E6E2D3;
   --color-brand-black: #0A0A0A;
 
+  /* 2025 Pantone & Luxury Palette */
+  --color-mocha-mousse: #A07665;
+  --color-jewel-emerald: #1B5E3F;
+  --color-jewel-sapphire: #0F4C81;
+  --color-jewel-ruby: #9B2335;
+  --color-rose-gold: #B76E79;
+  --color-champagne-gold: #C9B037;
+
   /* Glassmorphism */
   --glass-bg: rgba(250, 249, 246, 0.7);
   --glass-border: rgba(26, 41, 47, 0.1);
@@ -295,6 +303,28 @@
   /* Gradient text */
   .gradient-text {
     background: linear-gradient(135deg, #1A292F 0%, #3D5A66 50%, #88A896 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Metallic gradient effects - 2025 Luxury */
+  .gradient-gold {
+    background: linear-gradient(135deg, #C9B037 0%, #F4E5B8 50%, #C9B037 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-rose-gold {
+    background: linear-gradient(135deg, #B76E79 0%, #E8B4B8 50%, #B76E79 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-jewel {
+    background: linear-gradient(135deg, var(--color-jewel-emerald) 0%, var(--color-jewel-sapphire) 50%, var(--color-jewel-ruby) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

@@ -42,6 +42,17 @@ const config: Config = {
           DEFAULT: '#D4A574',  // Amber (TABLE)
           amber: '#D4A574',
         },
+        // 2025 Pantone & Luxury Palette
+        'mocha-mousse': '#A07665',
+        jewel: {
+          emerald: '#1B5E3F',
+          sapphire: '#0F4C81',
+          ruby: '#9B2335',
+        },
+        metallic: {
+          'rose-gold': '#B76E79',
+          'champagne-gold': '#C9B037',
+        },
       },
       fontFamily: {
         // Korean-optimized typography

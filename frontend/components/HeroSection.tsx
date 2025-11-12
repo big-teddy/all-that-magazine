@@ -21,10 +21,11 @@ export default function HeroSection({ article }: Props) {
     offset: ["start start", "end start"]
   });
 
-  // Parallax effects
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0.3]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+  // Enhanced 3D Parallax effects
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.7, 0.2]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
+  const blur = useTransform(scrollYProgress, [0, 1], ["blur(0px)", "blur(8px)"]);
 
   const href = `/${vertical.slug}/${article.slug}`;
   const imageUrl = featuredImage?.node?.sourceUrl || 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1600&h=900&fit=crop';
@@ -32,10 +33,10 @@ export default function HeroSection({ article }: Props) {
 
   return (
     <section ref={containerRef} className="relative h-screen min-h-[700px] mb-32 lg:mb-48 overflow-hidden">
-      {/* Background Image with Parallax Effect */}
+      {/* Background Image with Enhanced 3D Parallax Effect */}
       <motion.div
         className="absolute inset-0"
-        style={{ y, scale }}
+        style={{ y, scale, filter: blur }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
@@ -47,7 +48,8 @@ export default function HeroSection({ article }: Props) {
           className="object-cover"
           priority
           sizes="100vw"
-          quality={95}
+          quality={90}
+          loading="eager"
         />
         {/* Gradient Overlay - stronger for better text contrast */}
         <motion.div
@@ -122,8 +124,15 @@ export default function HeroSection({ article }: Props) {
               <span className="font-medium">{readTime}분 읽기</span>
               {isPremium && (
                 <motion.span
-                  className="px-3 py-1 bg-yellow-400/90 text-black text-sm font-bold rounded-full"
-                  animate={{ scale: [1, 1.05, 1] }}
+                  className="px-4 py-2 bg-gradient-to-r from-metallic-champagne-gold via-metallic-rose-gold to-metallic-champagne-gold text-white text-sm font-bold rounded-full shadow-2xl"
+                  animate={{
+                    scale: [1, 1.05, 1],
+                    boxShadow: [
+                      '0 10px 25px rgba(201, 176, 55, 0.3)',
+                      '0 15px 35px rgba(201, 176, 55, 0.5)',
+                      '0 10px 25px rgba(201, 176, 55, 0.3)'
+                    ]
+                  }}
                   transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
                 >
                   ★ 프리미엄
