@@ -20,6 +20,16 @@ export interface CreateArticleResponse {
   message: string;
 }
 
+export interface DraftData extends CreateArticleData {
+  draftId?: string;
+}
+
+export interface SaveDraftResponse {
+  success: boolean;
+  draft_id: string;
+  message: string;
+}
+
 const WP_API_URL = process.env.NEXT_PUBLIC_WP_API_URL || 'https://allthatmagazine.com/wp-json';
 const WP_USERNAME = process.env.NEXT_PUBLIC_WP_USERNAME || '';
 const WP_APP_PASSWORD = process.env.NEXT_PUBLIC_WP_APP_PASSWORD || '';
@@ -64,4 +74,50 @@ export async function uploadImage(file: File): Promise<string> {
 
   const data = await response.json();
   return data.source_url;
+}
+
+/**
+ * Save article as draft (can be auto-saved)
+ */
+export async function saveDraft(data: DraftData): Promise<SaveDraftResponse> {
+  const credentials = Buffer.from(`${WP_USERNAME}:${WP_APP_PASSWORD}`).toString('base64');
+
+  const response = await fetch(`${WP_API_URL}/atm/v1/save-draft`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Basic ${credentials}`,
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(error.message || 'Failed to save draft');
+  }
+
+  return response.json();
+}
+
+/**
+ * Publish a saved draft
+ */
+export async function publishDraft(draftId: string): Promise<CreateArticleResponse> {
+  const credentials = Buffer.from(`${WP_USERNAME}:${WP_APP_PASSWORD}`).toString('base64');
+
+  const response = await fetch(`${WP_API_URL}/atm/v1/publish-draft`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Basic ${credentials}`,
+    },
+    body: JSON.stringify({ draft_id: draftId }),
+  });
+
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(error.message || 'Failed to publish draft');
+  }
+
+  return response.json();
 }
